@@ -1,5 +1,5 @@
 server:
-  port: 48080
+  port: 48080 # 端口
 
 --- #################### 数据库相关配置 ####################
 
@@ -68,10 +68,10 @@ spring:
 
   # Redis 配置。Redisson 默认的配置足够使用，一般不需要进行调优
   redis:
-    host: 139.9.196.247 # 地址
+    host: 127.0.0.1 # 地址
     port: 6379 # 端口
     database: 0 # 数据库索引
-    password: 123456 # 密码，建议生产环境开启
+    # password: 123456 # 密码，建议生产环境开启
 
 jasypt:
   encryptor:
@@ -215,6 +215,7 @@ yudao:
     enable: false
   demo: false # 关闭演示模式
 
+# 社交登录
 justauth:
   enabled: true
   type:

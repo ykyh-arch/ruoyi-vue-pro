@@ -31,7 +31,7 @@
         <dependency>
             <groupId>cn.iocoder.boot</groupId>
             <artifactId>yudao-spring-boot-starter-web</artifactId>
-            <scope>provided</scope>
+            <scope>provided</scope> <!-- 设置为 provided，只有当前模块包需要使用到 -->
         </dependency>
 
         <!-- 业务组件 -->

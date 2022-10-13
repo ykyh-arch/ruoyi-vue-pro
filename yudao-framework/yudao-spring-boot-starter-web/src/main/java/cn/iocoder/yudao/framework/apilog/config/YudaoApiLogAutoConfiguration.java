@@ -20,7 +20,7 @@ import org.springframework.context.annotation.Configuration;
 import javax.servlet.Filter;
 
 @Configuration
-@AutoConfigureAfter(YudaoWebAutoConfiguration.class)
+@AutoConfigureAfter(YudaoWebAutoConfiguration.class) // 表明当前配置类在某一个配置类加载后加载。
 public class YudaoApiLogAutoConfiguration {
 
     @Bean

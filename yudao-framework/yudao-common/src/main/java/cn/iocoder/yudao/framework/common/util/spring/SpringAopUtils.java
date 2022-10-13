@@ -16,7 +16,7 @@ public class SpringAopUtils {
      * 获取代理的目标对象
      *
      * @param proxy 代理对象
-     * @return 目标对象
+     * @return 目标对象（被代理对象）
      */
     public static Object getTarget(Object proxy) throws Exception {
         // 不是代理对象

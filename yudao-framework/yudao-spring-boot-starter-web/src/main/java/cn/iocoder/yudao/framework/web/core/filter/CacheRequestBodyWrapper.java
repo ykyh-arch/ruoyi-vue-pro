@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- *  Request Body 缓存 Wrapper
+ *  Request Body 缓存 Wrapper，参考：https://blog.csdn.net/yaomingyang/article/details/108246334
  *
  * @author 芋道源码
  */
@@ -33,6 +33,10 @@ public class CacheRequestBodyWrapper extends HttpServletRequestWrapper {
         return new BufferedReader(new InputStreamReader(this.getInputStream()));
     }
 
+    /**
+     * 每次调用此方法时将数据流中的数据读取出来，然后再回填到 InputStream 之中
+     * 解决通过@RequestBody读取一次后控制器拿不到参数问题
+     */
     @Override
     public ServletInputStream getInputStream() throws IOException {
         final ByteArrayInputStream inputStream = new ByteArrayInputStream(body);

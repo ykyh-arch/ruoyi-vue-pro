@@ -20,7 +20,7 @@ import java.util.List;
  *
  * @author 芋道源码
  */
-@UtilityClass
+@UtilityClass // 标记静态方法类。效果如下：1、final类；2、自动生成一个私有无参构造函数； 3、方法、内部类、变量 标记成 static；static import时必须带*号
 @Slf4j
 public class JsonUtils {
 

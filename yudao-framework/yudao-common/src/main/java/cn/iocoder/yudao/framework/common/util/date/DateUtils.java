@@ -108,7 +108,7 @@ public class DateUtils {
      * @param date   设置时间
      * @param field  日历字段 例如说，{@link Calendar#DAY_OF_MONTH} 等
      * @param amount 相差的数值
-     * @return 计算后的日志
+     * @return 计算后的日期
      */
     public static Date addDate(Date date, int field, int amount) {
         if (amount == 0) {

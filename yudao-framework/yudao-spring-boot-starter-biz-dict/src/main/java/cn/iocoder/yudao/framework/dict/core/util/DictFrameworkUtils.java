@@ -57,6 +57,7 @@ public class DictFrameworkUtils {
         log.info("[init][初始化 DictFrameworkUtils 成功]");
     }
 
+    // lombak 提供的针对异常处理
     @SneakyThrows
     public static String getDictDataLabel(String dictType, String value) {
         return GET_DICT_DATA_CACHE.get(new KeyValue<>(dictType, value)).getLabel();

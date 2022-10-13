@@ -56,11 +56,20 @@ public class YudaoWebAutoConfiguration implements WebMvcConfigurer {
                 && antPathMatcher.match(api.getController(), clazz.getPackage().getName())); // 仅仅匹配 controller 包
     }
 
+    /**
+     * 全局异常信息处理，针对 API 接口异常处理
+     *
+     * @param ApiErrorLogFrameworkService
+     * @return
+     */
     @Bean
     public GlobalExceptionHandler globalExceptionHandler(ApiErrorLogFrameworkService ApiErrorLogFrameworkService) {
         return new GlobalExceptionHandler(applicationName, ApiErrorLogFrameworkService);
     }
 
+    /**
+     * 全局响应结果（ResponseBody）处理器
+     */
     @Bean
     public GlobalResponseBodyHandler globalResponseBodyHandler() {
         return new GlobalResponseBodyHandler();

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: yudao-server
+    name: yudao-server # 应用名称
 
   profiles:
     active: local
@@ -91,6 +91,7 @@ yudao:
   swagger:
     title: 管理后台
     description: 提供管理员管理的所有功能
+    author: 芋艿
     version: ${yudao.info.version}
     base-package: ${yudao.info.base-package}
   captcha:

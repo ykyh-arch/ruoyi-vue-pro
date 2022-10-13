@@ -22,7 +22,7 @@ public class DemoFilter extends OncePerRequestFilter {
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
         String method = request.getMethod();
-        return !StrUtil.equalsAnyIgnoreCase(method, "POST", "PUT", "DELETE")  // 写操作时，不进行过滤率
+        return !StrUtil.equalsAnyIgnoreCase(method, "POST", "PUT", "DELETE")  // 写操作时，不进行过滤
                 || WebFrameworkUtils.getLoginUserId(request) == null; // 非登录用户时，不进行过滤
     }
 
