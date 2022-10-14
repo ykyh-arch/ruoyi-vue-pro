@@ -71,7 +71,7 @@ public class OperateLogAspect {
 
     @Around("@annotation(apiOperation)")
     public Object around(ProceedingJoinPoint joinPoint, ApiOperation apiOperation) throws Throwable {
-        // 可能也添加了 @ApiOperation 注解
+        // 可能也添加了 @OperateLog 注解
         cn.iocoder.yudao.framework.operatelog.core.annotations.OperateLog operateLog = getMethodAnnotation(joinPoint,
                 cn.iocoder.yudao.framework.operatelog.core.annotations.OperateLog.class);
         return around0(joinPoint, operateLog, apiOperation);
@@ -257,7 +257,7 @@ public class OperateLogAspect {
         if (operateLog != null) {
             return operateLog.enable();
         }
-        // 没有 @ApiOperation 注解的情况下，只记录 POST、PUT、DELETE 的情况
+        // 没有 @OperateLog 注解的情况下，只记录 POST、PUT、DELETE 的情况
         return obtainFirstLogRequestMethod(obtainRequestMethod(joinPoint)) != null;
     }
 

@@ -1,3 +1,5 @@
+--- #################### 配置文件提示，参考： https://blog.csdn.net/weixin_43931625/article/details/120306603 ####################
+
 spring:
   application:
     name: yudao-server # 应用名称
