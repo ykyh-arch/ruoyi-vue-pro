@@ -41,7 +41,7 @@ public class ErrorCodeAutoGeneratorImpl implements ErrorCodeAutoGenerator {
     private final ErrorCodeApi errorCodeApi;
 
     @Override
-    @EventListener(ApplicationReadyEvent.class)
+    @EventListener(ApplicationReadyEvent.class) // 表名应用初始化完成，可以准备接收请求。
     @Async // 异步，保证项目的启动过程，毕竟非关键流程
     public void execute() {
         // 第一步，解析错误码
