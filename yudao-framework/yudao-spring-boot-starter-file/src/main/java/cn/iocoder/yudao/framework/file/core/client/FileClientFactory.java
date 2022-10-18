@@ -5,7 +5,7 @@ public interface FileClientFactory {
     /**
      * 获得文件客户端
      *
-     * @param configId 配置编号
+     * @param configId 配置编号，从数据库查询获得的
      * @return 文件客户端
      */
     FileClient getFileClient(Long configId);

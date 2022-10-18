@@ -92,6 +92,22 @@ public class S3FileClientTest {
         testExecuteUpload(config);
     }
 
+    @Test
+    @Disabled // 天翼云存储，如果要集成测试，可以注释本行
+    public void testTianYi() throws Exception {
+        S3FileClientConfig config = new S3FileClientConfig();
+        // 配置成你自己的
+        config.setAccessKey(System.getenv("TIANYI_ACCESS_KEY"));
+        config.setAccessSecret(System.getenv("TIANYI_SECRET_KEY"));
+        config.setBucket("lzgddbmysql");
+        config.setDomain(null);
+        // 默认上海的 endpoint
+        config.setEndpoint("neimeng-6.zos.ctyun.cn");
+
+        // 执行上传
+        testExecuteUpload(config);
+    }
+
     private void testExecuteUpload(S3FileClientConfig config) throws Exception {
         // 校验配置
         ValidationUtils.validate(Validation.buildDefaultValidatorFactory().getValidator(), config);

@@ -49,7 +49,7 @@ public class FtpFileClientConfig implements FileClientConfig {
     @NotEmpty(message = "密码不能为空")
     private String password;
     /**
-     * 连接模式
+     * 连接模式（主动模式、被动模式）
      *
      * 使用 {@link  cn.hutool.extra.ftp.FtpMode} 对应的字符串
      */

@@ -49,6 +49,7 @@ public abstract class AbstractFileClient<Config extends FileClientConfig> implem
         this.init();
     }
 
+    // 获取配置编号
     @Override
     public Long getId() {
         return id;
