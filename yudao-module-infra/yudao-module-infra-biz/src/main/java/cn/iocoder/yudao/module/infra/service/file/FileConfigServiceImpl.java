@@ -92,7 +92,7 @@ public class FileConfigServiceImpl implements FileConfigService {
             return;
         }
 
-        // 创建或更新支付 Client
+        // 创建或更新文件 Client
         configs.forEach(config -> {
             fileClientFactory.createOrUpdateFileClient(config.getId(), config.getStorage(), config.getConfig());
             // 如果是 master，进行设置
@@ -126,7 +126,7 @@ public class FileConfigServiceImpl implements FileConfigService {
             if (fileConfigMapper.selectCountByUpdateTimeGt(maxUpdateTime) == 0) {
                 return null;
             }
-            log.info("[loadFileConfigIfUpdate][增量加载全量文件配置]");
+            log.info("[loadFileConfigIfUpdate][增量加载文件配置]");
         }
         // 第二步，如果有更新，则从数据库加载所有文件配置
         return fileConfigMapper.selectList();

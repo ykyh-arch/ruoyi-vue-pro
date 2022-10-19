@@ -25,6 +25,7 @@ import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.FILE_NOT_EX
 @Service
 public class FileServiceImpl implements FileService {
 
+    // 为什么 Spring 和 IDEA 都不推荐使用 @Autowired 注解，参考：https://www.yht7.com/news/182667
     @Resource
     private FileConfigService fileConfigService;
 
