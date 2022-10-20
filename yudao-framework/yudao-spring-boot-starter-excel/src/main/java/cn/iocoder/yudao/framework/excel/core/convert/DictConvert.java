@@ -21,7 +21,7 @@ public class DictConvert implements Converter<Object> {
 
     @Override
     public Class<?> supportJavaTypeKey() {
-        throw new UnsupportedOperationException("暂不支持，也不需要");
+        throw new UnsupportedOperationException("暂不支持，也不需要"); // Converter.super.supportJavaTypeKey();
     }
 
     @Override
@@ -58,7 +58,7 @@ public class DictConvert implements Converter<Object> {
         String value = String.valueOf(object);
         String label = DictFrameworkUtils.getDictDataLabel(type, value);
         if (label == null) {
-            log.error("[convertToExcelData][type({}) 转换不了 label({})]", type, value);
+            log.error("[convertToExcelData][type({}) 转换不了 value({})]", type, value);
             return new WriteCellData<>("");
         }
         // 生成 Excel 小表格
