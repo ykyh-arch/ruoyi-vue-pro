@@ -60,7 +60,7 @@ public class MyBatisUtils {
      * 兼容 MySQL 转义表名 `t_xxx`
      *
      * @param table 表
-     * @return 去除转移字符后的表名
+     * @return 去除转义字符后的表名
      */
     public static String getTableName(Table table) {
         String tableName = table.getName();

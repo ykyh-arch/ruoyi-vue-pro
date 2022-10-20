@@ -17,7 +17,7 @@ import java.io.IOException;
 public class DruidAdRemoveFilter extends OncePerRequestFilter {
 
     /**
-     * common.js 的路径
+     * common.js 的路径，完整路径参考：com/alibaba/druid/1.1.23/druid-1.1.23.jar!/support/http/resources/js/common.js
      */
     private static final String COMMON_JS_ILE_PATH = "support/http/resources/js/common.js";
 

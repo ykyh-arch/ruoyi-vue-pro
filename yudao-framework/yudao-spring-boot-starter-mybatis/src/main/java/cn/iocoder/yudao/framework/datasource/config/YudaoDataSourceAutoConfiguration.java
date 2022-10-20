@@ -24,7 +24,7 @@ public class YudaoDataSourceAutoConfiguration {
      */
     @Bean
     @ConditionalOnProperty(name = "spring.datasource.druid.web-stat-filter.enabled", havingValue = "true")
-    public FilterRegistrationBean<DruidAdRemoveFilter> druidAdRemoveFilterFilter(DruidStatProperties properties) {
+    public FilterRegistrationBean<DruidAdRemoveFilter> druidAdRemoveFilter(DruidStatProperties properties) {
         // 获取 druid web 监控页面的参数
         DruidStatProperties.StatViewServlet config = properties.getStatViewServlet();
         // 提取 common.js 的配置路径
