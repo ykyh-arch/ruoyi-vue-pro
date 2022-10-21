@@ -30,7 +30,7 @@ public class RedisKeyDefine {
         /**
          * 类型
          */
-        @JsonValue
+        @JsonValue // 转化为 json 时对应的是值，如：对于 ZSET("Sorted Set")，最终获取的是 "Sorted Set"，而不是 ZSET
         private final String type;
 
     }
@@ -70,7 +70,7 @@ public class RedisKeyDefine {
      */
     private final TimeoutTypeEnum timeoutType;
     /**
-     * 过期时间
+     * 过期时间，Duration 类通过秒和纳秒相结合来描述一个时间量，最高精度是纳秒。参考：https://www.jb51.net/article/249082.htm
      */
     private final Duration timeout;
     /**

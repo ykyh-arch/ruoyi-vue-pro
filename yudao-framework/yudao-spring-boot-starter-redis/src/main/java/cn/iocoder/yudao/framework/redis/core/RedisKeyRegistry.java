@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * {@link RedisKeyDefine} 注册表
+ * 关联 {@link RedisKeyDefine} 注册表
  */
 public class RedisKeyRegistry {
 
