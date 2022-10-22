@@ -55,9 +55,11 @@ public abstract class AbstractChannelMessageListener<T extends AbstractChannelMe
     public final void onMessage(Message message, byte[] bytes) {
         T messageObj = JsonUtils.parseObject(message.getBody(), messageType);
         try {
+            // 前置消息处理
             consumeMessageBefore(messageObj);
             // 消费消息
             this.onMessage(messageObj);
+            // 后置消息处理
         } finally {
             consumeMessageAfter(messageObj);
         }

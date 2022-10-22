@@ -30,7 +30,7 @@ public abstract class AbstractStreamMessageListener<T extends AbstractStreamMess
      */
     private final Class<T> messageType;
     /**
-     * Redis Channel
+     * Redis StreamKey
      */
     @Getter
     private final String streamKey;
