@@ -5,7 +5,7 @@ import cn.iocoder.yudao.framework.quartz.core.handler.JobHandlerInvoker;
 import org.quartz.*;
 
 /**
- * {@link org.quartz.Scheduler} 的管理器，负责创建任务
+ * 关联 {@link org.quartz.Scheduler} 的管理器，负责创建任务
  *
  * 考虑到实现的简洁性，我们使用 jobHandlerName 作为唯一标识，即：
  * 1. Job 的 {@link JobDetail#getKey()}
@@ -88,7 +88,7 @@ public class SchedulerManager {
     }
 
     /**
-     * 启动 Quartz 中的 Job
+     * 启动 Quartz 中的 Job（重启）
      *
      * @param jobHandlerName 任务处理器的名字
      * @throws SchedulerException 启动异常

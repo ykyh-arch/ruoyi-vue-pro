@@ -1,7 +1,7 @@
 package cn.iocoder.yudao.framework.quartz.core.enums;
 
 /**
- * Quartz Job Data 的 key 枚举
+ * Quartz Job Data 的 key 枚举(JobDataMap)
  */
 public enum JobDataKeyEnum {
 
