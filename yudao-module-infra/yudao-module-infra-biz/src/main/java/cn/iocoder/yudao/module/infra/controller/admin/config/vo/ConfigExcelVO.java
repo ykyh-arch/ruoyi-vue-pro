@@ -33,7 +33,7 @@ public class ConfigExcelVO {
     @DictFormat(DictTypeConstants.CONFIG_TYPE)
     private Integer type;
 
-    @ExcelProperty(value = "是否敏感", converter = DictConvert.class)
+    @ExcelProperty(value = "是否可见", converter = DictConvert.class)
     @DictFormat(DictTypeConstants.BOOLEAN_STRING)
     private Boolean sensitive;
 
