@@ -21,6 +21,7 @@ import java.lang.reflect.Method;
  */
 public class ExpressionIdempotentKeyResolver implements IdempotentKeyResolver {
 
+    // Spring 通过 ASM 提供的通过字节码获取方法的参数名称，参考：https://blog.csdn.net/u012881904/article/details/77199252
     private final ParameterNameDiscoverer parameterNameDiscoverer = new LocalVariableTableParameterNameDiscoverer();
     private final ExpressionParser expressionParser = new SpelExpressionParser();
 
