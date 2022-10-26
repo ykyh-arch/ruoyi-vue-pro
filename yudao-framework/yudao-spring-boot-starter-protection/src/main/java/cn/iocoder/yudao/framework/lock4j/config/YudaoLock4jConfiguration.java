@@ -14,7 +14,7 @@ public class YudaoLock4jConfiguration {
 
     static {
         // 手动加载 Lock4jRedisKeyConstants 类，因为它不会被使用到
-        // 如果不加载，会导致 Redis 监控，看到它的 Redis Key 枚举
+        // 如果不加载，会导致 Redis 监控，看不到它的 Redis Key 枚举
         ClassUtil.loadClass(Lock4jRedisKeyConstants.class.getName());
     }
 
