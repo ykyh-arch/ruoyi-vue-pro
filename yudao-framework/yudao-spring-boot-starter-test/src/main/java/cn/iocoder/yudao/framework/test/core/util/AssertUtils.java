@@ -81,7 +81,7 @@ public class AssertUtils {
     /**
      * 执行方法，校验抛出的 Service 是否符合条件
      *
-     * @param executable 业务异常
+     * @param executable 可执行代码
      * @param errorCode 错误码对象
      * @param messageParams 消息参数
      */

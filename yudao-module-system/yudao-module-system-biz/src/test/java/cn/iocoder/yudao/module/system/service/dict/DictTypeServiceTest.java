@@ -175,7 +175,7 @@ public class DictTypeServiceTest extends BaseDbUnitTest {
         dictTypeMapper.insert(dbDictType);// @Sql: 先插入出一条存在的数据
         // 准备参数
         Long id = dbDictType.getId();
-        // mock 方法
+        // mock 方法，当执行代码 dictDataService.countByDictType(eq(dbDictType.getType())) 返回 1L，而不是真正的执行数据库
         when(dictDataService.countByDictType(eq(dbDictType.getType()))).thenReturn(1L);
 
         // 调用, 并断言异常
@@ -261,7 +261,7 @@ public class DictTypeServiceTest extends BaseDbUnitTest {
 
     // ========== 随机对象 ==========
 
-    @SafeVarargs
+    @SafeVarargs // 使用 @SafeVarargs 注解抑制编译器警告，参考：https://blog.csdn.net/dengzhao3993/article/details/101505980
     private static DictTypeDO randomDictTypeDO(Consumer<DictTypeDO>... consumers) {
         Consumer<DictTypeDO> consumer = (o) -> {
             o.setStatus(randomEle(CommonStatusEnum.values()).getStatus()); // 保证 status 的范围

@@ -19,7 +19,7 @@ import org.springframework.test.context.jdbc.Sql;
  *
  * @author 芋道源码
  */
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE, classes = BaseDbUnitTest.Application.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE, classes = BaseDbUnitTest.Application.class) // webEnvironment 参数说明：https://www.xinruiyun.cn/zhishiku/5111.html
 @ActiveProfiles("unit-test") // 设置使用 application-unit-test 配置文件
 @Sql(scripts = "/sql/clean.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD) // 每个单元测试结束后，清理 DB
 public class BaseDbUnitTest {

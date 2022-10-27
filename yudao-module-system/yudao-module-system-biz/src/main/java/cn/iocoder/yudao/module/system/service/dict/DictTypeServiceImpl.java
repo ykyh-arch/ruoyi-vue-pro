@@ -121,11 +121,11 @@ public class DictTypeServiceImpl implements DictTypeService {
         if (dictType == null) {
             return;
         }
-        // 如果 id 为空，说明不用比较是否为相同 id 的字典类型
+        // 如果 id 为空，说明不用比较是否为相同 id 的字典类型，说明为新增
         if (id == null) {
             throw exception(DICT_TYPE_TYPE_DUPLICATE);
         }
-        if (!dictType.getId().equals(id)) {
+        if (!dictType.getId().equals(id)) { // 说明为修改且不是同一条字典类型的数据
             throw exception(DICT_TYPE_TYPE_DUPLICATE);
         }
     }
