@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
  * @author mashu
  */
 @Configuration
-@ConditionalOnClass({BizTraceAspect.class})
+@ConditionalOnClass({BizTraceAspect.class}) // 注解说明：https://blog.csdn.net/lbh199466/article/details/88303897
 @EnableConfigurationProperties(TracerProperties.class)
 @ConditionalOnProperty(prefix = "yudao.tracer", value = "enable", matchIfMissing = true)
 public class YudaoTracerAutoConfiguration {
