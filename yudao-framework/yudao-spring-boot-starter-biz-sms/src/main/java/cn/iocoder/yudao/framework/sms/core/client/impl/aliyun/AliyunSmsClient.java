@@ -71,13 +71,13 @@ public class AliyunSmsClient extends AbstractSmsClient {
     @Override
     protected SmsCommonResult<SmsSendRespDTO> doSendSms(Long sendLogId, String mobile,
                                                         String apiTemplateId, List<KeyValue<String, Object>> templateParams) {
-        // 构建参数
+        // 构建参数，参考：https://help.aliyun.com/document_detail/112148.html
         SendSmsRequest request = new SendSmsRequest();
         request.setPhoneNumbers(mobile);
         request.setSignName(properties.getSignature());
         request.setTemplateCode(apiTemplateId);
         request.setTemplateParam(JsonUtils.toJsonString(MapUtils.convertMap(templateParams)));
-        request.setOutId(String.valueOf(sendLogId));
+        request.setOutId(String.valueOf(sendLogId)); // 用户序列号
         // 执行请求
         return invoke(request, response -> new SmsSendRespDTO().setSerialNo(response.getBizId()));
     }

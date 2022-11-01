@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * 消息接收 Response DTO
+ * 消息接收 Response DTO （短信回执消息）
  *
  * @author 芋道源码
  */
@@ -35,7 +35,7 @@ public class SmsReceiveRespDTO {
     private Date receiveTime;
 
     /**
-     * 短信 API 发送返回的序号
+     * 短信 API 发送返回的序号，关联 {@link SmsSendRespDTO#getSerialNo()}
      */
     private String serialNo;
     /**

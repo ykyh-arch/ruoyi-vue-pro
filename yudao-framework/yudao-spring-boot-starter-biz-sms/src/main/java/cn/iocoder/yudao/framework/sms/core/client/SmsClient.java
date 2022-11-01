@@ -29,7 +29,7 @@ public interface SmsClient {
      * @param mobile 手机号
      * @param apiTemplateId 短信 API 的模板编号
      * @param templateParams 短信模板参数。通过 List 数组，保证参数的顺序
-     * @return 短信发送结果
+     * @return 短信发送结果，返回序号
      */
     SmsCommonResult<SmsSendRespDTO> sendSms(Long logId, String mobile, String apiTemplateId,
                                             List<KeyValue<String, Object>> templateParams);
@@ -37,7 +37,7 @@ public interface SmsClient {
     /**
      * 解析接收短信的接收结果
      *
-     * @param text 结果
+     * @param text 结果，短信发送回执信息
      * @return 结果内容
      * @throws Throwable 当解析 text 发生异常时，则会抛出异常
      */

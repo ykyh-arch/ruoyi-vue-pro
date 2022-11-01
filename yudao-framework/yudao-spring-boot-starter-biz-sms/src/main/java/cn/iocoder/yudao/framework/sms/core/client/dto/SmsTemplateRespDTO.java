@@ -12,7 +12,7 @@ import lombok.Data;
 public class SmsTemplateRespDTO {
 
     /**
-     * 模板编号
+     * 模板编号，对应 apiTemplateId 短信 API 的模板编号
      */
     private String id;
     /**

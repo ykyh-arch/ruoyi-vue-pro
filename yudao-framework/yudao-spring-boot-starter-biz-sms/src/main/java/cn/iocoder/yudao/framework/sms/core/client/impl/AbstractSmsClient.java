@@ -69,6 +69,11 @@ public abstract class AbstractSmsClient implements SmsClient {
         return properties;
     }
 
+    /**
+     * 获得渠道编号
+     *
+     * @return
+     */
     @Override
     public Long getId() {
         return properties.getId();
