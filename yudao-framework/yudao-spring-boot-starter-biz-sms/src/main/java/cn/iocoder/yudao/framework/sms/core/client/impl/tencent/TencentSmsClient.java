@@ -60,6 +60,7 @@ public class TencentSmsClient extends AbstractSmsClient {
 
     public TencentSmsClient(SmsChannelProperties properties) {
         super(properties, new TencentSmsCodeMapping());
+        Assert.notEmpty(properties.getApiKey(), "apiKey 不能为空");
         Assert.notEmpty(properties.getApiSecret(), "apiSecret 不能为空");
     }
 
@@ -83,7 +84,6 @@ public class TencentSmsClient extends AbstractSmsClient {
                             new SmsSendRespDTO().setSerialNo(sendStatus.getSerialNo()), codeMapping);
                 });
     }
-
 
     /**
      * 腾讯云发放短信的时候，需要额外的参数 sdkAppId。
@@ -132,6 +132,13 @@ public class TencentSmsClient extends AbstractSmsClient {
         return request;
     }
 
+    /**
+     * 参考：https://cloud.tencent.com/document/product/382/59178
+     *
+     * @param text
+     * @return
+     * @throws Throwable
+     */
     @Override
     protected List<SmsReceiveRespDTO> doParseSmsReceiveStatus(String text) throws Throwable {
         List<SmsReceiveStatus> callback = JsonUtils.parseArray(text, SmsReceiveStatus.class);
@@ -149,6 +156,13 @@ public class TencentSmsClient extends AbstractSmsClient {
         });
     }
 
+    /**
+     * 参考：https://cloud.tencent.com/document/product/382/52067
+     *
+     * @param apiTemplateId
+     * @return
+     * @throws Throwable
+     */
     @Override
     protected SmsCommonResult<SmsTemplateRespDTO> doGetSmsTemplate(String apiTemplateId) throws Throwable {
         return invoke(() -> this.buildSmsTemplateStatusRequest(apiTemplateId),
@@ -227,6 +241,10 @@ public class TencentSmsClient extends AbstractSmsClient {
         return resultGen.apply(response);
     }
 
+    /**
+     * 短信回执信息
+     *
+     */
     @Data
     private static class SmsReceiveStatus {
 

@@ -63,7 +63,7 @@ public class AliyunSmsClientTest extends BaseMockitoUnitTest {
         // 调用
         smsClient.doInit();
         // 断言
-        assertNotSame(client, ReflectUtil.getFieldValue(smsClient, "acsClient"));
+        assertNotSame(client, ReflectUtil.getFieldValue(smsClient, "client"));
     }
 
     @Test

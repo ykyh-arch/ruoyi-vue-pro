@@ -82,6 +82,13 @@ public class AliyunSmsClient extends AbstractSmsClient {
         return invoke(request, response -> new SmsSendRespDTO().setSerialNo(response.getBizId()));
     }
 
+    /**
+     * 参考：https://help.aliyun.com/document_detail/101641.html
+     *
+     * @param text
+     * @return
+     * @throws Throwable
+     */
     @Override
     protected List<SmsReceiveRespDTO> doParseSmsReceiveStatus(String text) throws Throwable {
         List<SmsReceiveStatus> statuses = JsonUtils.parseArray(text, SmsReceiveStatus.class);
