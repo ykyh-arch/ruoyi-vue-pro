@@ -63,6 +63,16 @@ public class YunpianSmsClient extends AbstractSmsClient {
         }
     }
 
+    /**
+     * 参考：https://www.yunpian.com/official/document/sms/zh_CN/domestic_tpl_single_send
+     *
+     * @param sendLogId
+     * @param mobile
+     * @param apiTemplateId
+     * @param templateParams
+     * @return
+     * @throws Throwable
+     */
     @Override
     protected SmsCommonResult<SmsSendRespDTO> doSendSms(Long sendLogId, String mobile,
                                                         String apiTemplateId, List<KeyValue<String, Object>> templateParams) throws Throwable {
@@ -88,6 +98,13 @@ public class YunpianSmsClient extends AbstractSmsClient {
         return joiner.toString();
     }
 
+    /**
+     * 参考：https://www.yunpian.com/official/document/sms/zh_CN/domestic_pull_report
+     *
+     * @param text
+     * @return
+     * @throws Throwable
+     */
     @Override
     protected List<SmsReceiveRespDTO> doParseSmsReceiveStatus(String text) throws Throwable {
         List<SmsReceiveStatus> statuses = JsonUtils.parseArray(text, SmsReceiveStatus.class);

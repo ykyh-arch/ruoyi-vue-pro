@@ -59,7 +59,7 @@ public class YunpianSmsClientTest extends BaseMockitoUnitTest {
         smsClient.doInit();
         // 断言
         assertNotEquals(client, ReflectUtil.getFieldValue(smsClient, "client"));
-        verify(client, times(1)).close();
+        verify(client, times(1)).close(); // 参考：https://blog.csdn.net/dreamstar613/article/details/115740857
     }
 
     @Test
@@ -185,7 +185,7 @@ public class YunpianSmsClientTest extends BaseMockitoUnitTest {
         Result<SmsSingleSend> responseResult = randomPojo(Result.class, SmsSingleSend.class, o -> o.setCode(OK));
         Supplier<Result<SmsSingleSend>> requestConsumer = () -> responseResult;
         Function<SmsSingleSend, SmsSendRespDTO> responseConsumer =
-                smsSingleSend -> new SmsSendRespDTO().setSerialNo(String.valueOf(responseResult.getData().getSid()));
+                smsSingleSend -> new SmsSendRespDTO().setSerialNo(String.valueOf(smsSingleSend.getSid()));
         // mock 方法
 
         // 调用
