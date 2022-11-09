@@ -143,7 +143,7 @@ public class SmsTemplateServiceImpl implements SmsTemplateService {
     public Long createSmsTemplate(SmsTemplateCreateReqVO createReqVO) {
         // 校验短信渠道
         SmsChannelDO channelDO = checkSmsChannel(createReqVO.getChannelId());
-        // 校验短信编码是否重复
+        // 校验短信模板编码是否重复
         checkSmsTemplateCodeDuplicate(null, createReqVO.getCode());
         // 校验短信模板
         checkApiTemplate(createReqVO.getChannelId(), createReqVO.getApiTemplateId());

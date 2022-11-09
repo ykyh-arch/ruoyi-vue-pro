@@ -27,7 +27,7 @@ public interface SmsClientFactory {
     SmsClient getSmsClient(String channelCode);
 
     /**
-     * 创建短信 Client
+     * 创建更新短信 Client
      *
      * @param properties 配置对象
      */

@@ -43,7 +43,7 @@ public class SmsChannelServiceImpl implements SmsChannelService {
     private static final long SCHEDULER_PERIOD = 5 * 60 * 1000L;
 
     /**
-     * 缓存菜单的最大更新时间，用于后续的增量轮询，判断是否有更新
+     * 缓存短信渠道的最大更新时间，用于后续的增量轮询，判断是否有更新
      */
     private volatile Date maxUpdateTime;
 
@@ -129,7 +129,7 @@ public class SmsChannelServiceImpl implements SmsChannelService {
     public void deleteSmsChannel(Long id) {
         // 校验存在
         this.validateSmsChannelExists(id);
-        // 校验是否有字典数据
+        // 校验是否有短信模板数据
         if (smsTemplateService.countByChannelId(id) > 0) {
             throw exception(SMS_CHANNEL_HAS_CHILDREN);
         }

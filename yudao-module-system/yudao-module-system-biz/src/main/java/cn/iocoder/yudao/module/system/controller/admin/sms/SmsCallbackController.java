@@ -41,7 +41,7 @@ public class SmsCallbackController {
 
     @PostMapping("/aliyun")
     @PermitAll
-    @ApiOperation(value = "阿里云短信的回调", notes = "参见 https://help.aliyun.com/document_detail/120998.html 文档")
+    @ApiOperation(value = "阿里云短信的回调", notes = "参见 https://help.aliyun.com/document_detail/101641.html 文档")
     @OperateLog(enable = false)
     public CommonResult<Boolean> receiveAliyunSmsStatus(HttpServletRequest request) throws Throwable {
         String text = ServletUtil.getBody(request);

@@ -1,6 +1,7 @@
 package cn.iocoder.yudao.module.system.service.sms;
 
 import cn.hutool.core.map.MapUtil;
+import cn.iocoder.yudao.module.system.dal.dataobject.sms.SmsChannelDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.sms.SmsTemplateDO;
 import cn.iocoder.yudao.module.system.mq.message.sms.SmsSendMessage;
 import cn.iocoder.yudao.module.system.mq.producer.sms.SmsProducer;
@@ -38,6 +39,8 @@ public class SmsSendServiceTest extends BaseMockitoUnitTest {
     @Mock
     private SmsTemplateService smsTemplateService;
     @Mock
+    private SmsChannelService smsChannelService;
+    @Mock
     private SmsLogService smsLogService;
     @Mock
     private SmsProducer smsProducer;
@@ -66,6 +69,12 @@ public class SmsSendServiceTest extends BaseMockitoUnitTest {
         String content = randomString();
         when(smsTemplateService.formatSmsTemplateContent(eq(template.getContent()), eq(templateParams)))
                 .thenReturn(content);
+        // mock SmsChannelService 的方法
+        SmsChannelDO channelDO = randomPojo(SmsChannelDO.class, o -> {
+            o.setStatus(CommonStatusEnum.ENABLE.getStatus());
+            o.setId(template.getChannelId());
+        });
+        when(smsChannelService.getSmsChannel(eq(template.getChannelId()))).thenReturn(channelDO);
         // mock SmsLogService 的方法
         Long smsLogId = randomLongId();
         when(smsLogService.createSmsLog(eq(mobile), eq(userId), eq(userType), eq(Boolean.TRUE), eq(template),
@@ -103,6 +112,12 @@ public class SmsSendServiceTest extends BaseMockitoUnitTest {
         String content = randomString();
         when(smsTemplateService.formatSmsTemplateContent(eq(template.getContent()), eq(templateParams)))
                 .thenReturn(content);
+        // mock SmsChannelService 的方法
+        SmsChannelDO channelDO = randomPojo(SmsChannelDO.class, o -> {
+            o.setStatus(CommonStatusEnum.ENABLE.getStatus());
+            o.setId(template.getChannelId());
+        });
+        when(smsChannelService.getSmsChannel(eq(template.getChannelId()))).thenReturn(channelDO);
         // mock SmsLogService 的方法
         Long smsLogId = randomLongId();
         when(smsLogService.createSmsLog(eq(mobile), eq(userId), eq(userType), eq(Boolean.FALSE), eq(template),
@@ -117,6 +132,9 @@ public class SmsSendServiceTest extends BaseMockitoUnitTest {
                 anyLong(), any(), anyList());
     }
 
+    /**
+     * 测试短信模板不存在
+     */
     @Test
     public void testCheckSmsTemplateValid_notExists() {
         // 准备参数
@@ -128,6 +146,9 @@ public class SmsSendServiceTest extends BaseMockitoUnitTest {
                 SMS_SEND_TEMPLATE_NOT_EXISTS);
     }
 
+    /**
+     * 测试构建模板参数 - 参数丢失
+     */
     @Test
     public void testBuildTemplateParams_paramMiss() {
         // 准备参数
@@ -141,6 +162,9 @@ public class SmsSendServiceTest extends BaseMockitoUnitTest {
                 SMS_SEND_MOBILE_TEMPLATE_PARAM_MISS, "code");
     }
 
+    /**
+     * 测试检查手机号是否存在
+     */
     @Test
     public void testCheckMobile_notExists() {
         // 准备参数
@@ -151,13 +175,16 @@ public class SmsSendServiceTest extends BaseMockitoUnitTest {
                 SMS_SEND_MOBILE_NOT_EXISTS);
     }
 
+    /**
+     * 测试检发送短信
+     */
     @Test
     @SuppressWarnings("unchecked")
     public void testDoSendSms() {
         // 准备参数
         SmsSendMessage message = randomPojo(SmsSendMessage.class);
         // mock SmsClientFactory 的方法
-        SmsClient smsClient = spy(SmsClient.class);
+        SmsClient smsClient = spy(SmsClient.class); // mock 与 spy 参考：https://www.cnblogs.com/zendwang/p/mockito-mock-spy-usage.html
         when(smsClientFactory.getSmsClient(eq(message.getChannelId()))).thenReturn(smsClient);
         // mock SmsClient 的方法
         SmsCommonResult<SmsSendRespDTO> sendResult = randomPojo(SmsCommonResult.class, SmsSendRespDTO.class);
@@ -172,6 +199,9 @@ public class SmsSendServiceTest extends BaseMockitoUnitTest {
                 eq(sendResult.getApiMsg()), eq(sendResult.getApiRequestId()), eq(sendResult.getData().getSerialNo()));
     }
 
+    /**
+     * 测试接收短信发送的回执信息
+     */
     @Test
     public void testReceiveSmsStatus() throws Throwable {
         // 准备参数

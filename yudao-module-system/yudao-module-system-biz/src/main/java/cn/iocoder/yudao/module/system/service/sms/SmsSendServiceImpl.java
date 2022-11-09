@@ -11,6 +11,7 @@ import cn.iocoder.yudao.framework.sms.core.client.SmsClientFactory;
 import cn.iocoder.yudao.framework.sms.core.client.SmsCommonResult;
 import cn.iocoder.yudao.framework.sms.core.client.dto.SmsReceiveRespDTO;
 import cn.iocoder.yudao.framework.sms.core.client.dto.SmsSendRespDTO;
+import cn.iocoder.yudao.module.system.controller.admin.sms.SmsCallbackController;
 import cn.iocoder.yudao.module.system.dal.dataobject.sms.SmsChannelDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.sms.SmsTemplateDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.user.AdminUserDO;
@@ -94,7 +95,7 @@ public class SmsSendServiceImpl implements SmsSendService {
         Boolean isSend = CommonStatusEnum.ENABLE.getStatus().equals(template.getStatus())
                 && CommonStatusEnum.ENABLE.getStatus().equals(smsChannel.getStatus());
         ;
-        String content = smsTemplateService.formatSmsTemplateContent(template.getContent(), templateParams);
+        String content = smsTemplateService.formatSmsTemplateContent(template.getContent(), templateParams); // 格式化短信模板内容
         Long sendLogId = smsLogService.createSmsLog(mobile, userId, userType, isSend, template, content, templateParams);
 
         // 发送 MQ 消息，异步执行发送短信
@@ -168,6 +169,13 @@ public class SmsSendServiceImpl implements SmsSendService {
                 sendResult.getData() != null ? sendResult.getData().getSerialNo() : null);
     }
 
+    /**
+     * 短信发送成功后，可以在短信云平台设置的回调 url，用来确定短信是否发送成功，参考 {@link SmsCallbackController}
+     *
+     * @param channelCode 渠道编码
+     * @param text 结果内容
+     * @throws Throwable
+     */
     @Override
     public void receiveSmsStatus(String channelCode, String text) throws Throwable {
         // 获得渠道对应的 SmsClient 客户端
@@ -180,7 +188,7 @@ public class SmsSendServiceImpl implements SmsSendService {
         }
         // 更新短信日志的接收结果. 因为量一般不大，所以先使用 for 循环更新
         receiveResults.forEach(result -> smsLogService.updateSmsReceiveResult(result.getLogId(),
-                result.getSuccess(), result.getReceiveTime(), result.getErrorCode(), result.getErrorCode()));
+                result.getSuccess(), result.getReceiveTime(), result.getErrorCode(), result.getErrorMsg()));
     }
 
 }

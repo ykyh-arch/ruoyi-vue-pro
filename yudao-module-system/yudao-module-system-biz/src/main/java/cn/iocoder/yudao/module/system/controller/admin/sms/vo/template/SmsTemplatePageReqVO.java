@@ -18,7 +18,7 @@ import static cn.iocoder.yudao.framework.common.util.date.DateUtils.FORMAT_YEAR_
 @ToString(callSuper = true)
 public class SmsTemplatePageReqVO extends PageParam {
 
-    @ApiModelProperty(value = "短信签名", example = "1")
+    @ApiModelProperty(value = "短信类型", example = "1")
     private Integer type;
 
     @ApiModelProperty(value = "开启状态", example = "1")

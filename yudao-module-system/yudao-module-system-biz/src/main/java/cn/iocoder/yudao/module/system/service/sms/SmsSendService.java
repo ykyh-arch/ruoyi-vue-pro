@@ -67,7 +67,7 @@ public interface SmsSendService {
     void doSendSms(SmsSendMessage message);
 
     /**
-     * 接收短信的接收结果
+     * 接收短信的接收结果（回执消息）
      *
      * @param channelCode 渠道编码
      * @param text 结果内容

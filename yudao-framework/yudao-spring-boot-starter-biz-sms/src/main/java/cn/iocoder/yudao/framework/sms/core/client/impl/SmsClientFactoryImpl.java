@@ -52,6 +52,13 @@ public class SmsClientFactoryImpl implements SmsClientFactory {
         });
     }
 
+
+    /**
+     * 业务层传入获取客户端
+     *
+     * @param channelId 渠道编号
+     * @return
+     */
     @Override
     public SmsClient getSmsClient(Long channelId) {
         return channelIdClients.get(channelId);
@@ -62,6 +69,11 @@ public class SmsClientFactoryImpl implements SmsClientFactory {
         return channelCodeClients.get(channelCode);
     }
 
+    /**
+     * 项目启动或 channel 更新后刷新客户端
+     *
+     * @param properties 配置对象
+     */
     @Override
     public void createOrUpdateSmsClient(SmsChannelProperties properties) {
         AbstractSmsClient client = channelIdClients.get(properties.getId());
