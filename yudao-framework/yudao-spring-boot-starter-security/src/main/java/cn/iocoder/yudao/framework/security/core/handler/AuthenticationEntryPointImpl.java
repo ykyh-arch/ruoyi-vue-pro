@@ -23,7 +23,7 @@ import static cn.iocoder.yudao.framework.common.exception.enums.GlobalErrorCodeC
  */
 @Slf4j
 @SuppressWarnings("JavadocReference") // 忽略文档引用报错
-public class AuthenticationEntryPointImpl implements AuthenticationEntryPoint {
+public class AuthenticationEntryPointImpl implements AuthenticationEntryPoint { // 登录入口
 
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException e) {

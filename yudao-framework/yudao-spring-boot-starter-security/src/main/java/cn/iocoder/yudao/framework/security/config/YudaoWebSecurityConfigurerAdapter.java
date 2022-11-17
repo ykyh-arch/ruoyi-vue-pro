@@ -33,7 +33,7 @@ import java.util.Set;
  * @author 芋道源码
  */
 @Configuration
-@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true) // 开启基于方法的安全认证机制，也就是说在 web 层的 controller 启用注解机制的安全确认，类似 @PreAuthorize("@ss.hasPermission('infra:codegen:create')") 注解才生效！
 public class YudaoWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
 
     @Resource

@@ -15,7 +15,7 @@ public class InEnumValidator implements ConstraintValidator<InEnum, Integer> {
 
     @Override
     public void initialize(InEnum annotation) {
-        IntArrayValuable[] values = annotation.value().getEnumConstants();
+        IntArrayValuable[] values = annotation.value().getEnumConstants(); // #getEnumConstants() 参考：https://www.nhooo.com/note/qa0zw4.html
         if (values.length == 0) {
             this.values = Collections.emptyList();
         } else {

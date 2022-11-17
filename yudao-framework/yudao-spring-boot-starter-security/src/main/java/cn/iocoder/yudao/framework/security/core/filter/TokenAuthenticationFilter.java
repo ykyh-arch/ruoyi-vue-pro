@@ -52,11 +52,12 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
                     loginUser = mockLoginUser(request, token, userType);
                 }
 
-                // 2. 设置当前用户
+                // 2. 设置当前用户，线程上下文存储了用户信息，且 request 参数也存储用户信息
                 if (loginUser != null) {
                     SecurityFrameworkUtils.setLoginUser(loginUser, request);
                 }
             } catch (Throwable ex) {
+                // 过滤器全局异常处理
                 CommonResult<?> result = globalExceptionHandler.allExceptionHandler(request, ex);
                 ServletUtils.writeJSON(response, result);
                 return;
@@ -69,6 +70,7 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
 
     private LoginUser buildLoginUserByToken(String token, Integer userType) {
         try {
+            // 优先从缓存中取，其次从 Mysql 数据库中取值
             OAuth2AccessTokenCheckRespDTO accessToken = oauth2TokenApi.checkAccessToken(token);
             if (accessToken == null) {
                 return null;

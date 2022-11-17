@@ -98,6 +98,13 @@ public class SecurityFrameworkUtils {
         WebFrameworkUtils.setLoginUserType(request, loginUser.getUserType());
     }
 
+    /**
+     * 构建登录认证用户信息
+     *
+     * @param loginUser
+     * @param request
+     * @return
+     */
     private static Authentication buildAuthentication(LoginUser loginUser, HttpServletRequest request) {
         // 创建 UsernamePasswordAuthenticationToken 对象
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
