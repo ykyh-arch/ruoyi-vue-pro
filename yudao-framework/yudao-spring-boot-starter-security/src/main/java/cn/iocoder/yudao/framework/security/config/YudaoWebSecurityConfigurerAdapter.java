@@ -113,7 +113,7 @@ public class YudaoWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdap
         // 登录、登录暂时不使用 Spring Security 的拓展点，主要考虑一方面拓展多用户、多种登录方式相对复杂，一方面用户的学习成本较高
 
         // 获得 @PermitAll 带来的 URL 列表，免登录
-        Multimap<HttpMethod, String> permitAllUrls = getPermitAllUrlsFromAnnotations();
+        Multimap<HttpMethod, String> permitAllUrls = getPermitAllUrlsFromAnnotations(); // Multimap 使用参考：https://www.cnblogs.com/bao-bei/p/14428638.html
         // 设置每个请求的权限
         httpSecurity
                 // ①：全局共享规则
