@@ -67,7 +67,7 @@ public class DictDataController {
     }
 
     @GetMapping("/page")
-    @ApiOperation("/获得字典类型的分页列表")
+    @ApiOperation("/获得字典数据的分页列表")
     @PreAuthorize("@ss.hasPermission('system:dict:query')")
     public CommonResult<PageResult<DictDataRespVO>> getDictTypePage(@Valid DictDataPageReqVO reqVO) {
         return success(DictDataConvert.INSTANCE.convertPage(dictDataService.getDictDataPage(reqVO)));

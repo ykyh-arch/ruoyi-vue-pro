@@ -210,7 +210,7 @@ public class PermissionServiceImpl implements PermissionService {
      * 如果用户与角色的关联发生变化，从数据库中获取最新的全量用户与角色的关联。
      * 如果未发生变化，则返回空
      *
-     * @param maxUpdateTime 当前角色与菜单的关联的最大更新时间
+     * @param maxUpdateTime 当前用户与角色的关联的最大更新时间
      * @return 角色与菜单的关联列表
      */
     protected List<UserRoleDO> loadUserRoleIfUpdate(Date maxUpdateTime) {
@@ -326,8 +326,8 @@ public class PermissionServiceImpl implements PermissionService {
                 UserRoleDO::getRoleId);
         // 计算新增和删除的角色编号
         Collection<Long> createRoleIds = CollUtil.subtract(roleIds, dbRoleIds);
-        Collection<Long> deleteMenuIds = CollUtil.subtract(dbRoleIds, roleIds);
-        // 执行新增和删除。对于已经授权的角色，不用做任何处理
+        Collection<Long> deleteRoleIds = CollUtil.subtract(dbRoleIds, roleIds);
+        // 执行新增和删除。
         if (!CollectionUtil.isEmpty(createRoleIds)) {
             userRoleBatchInsertMapper.saveBatch(CollectionUtils.convertList(createRoleIds, roleId -> {
                 UserRoleDO entity = new UserRoleDO();
@@ -336,8 +336,8 @@ public class PermissionServiceImpl implements PermissionService {
                 return entity;
             }));
         }
-        if (!CollectionUtil.isEmpty(deleteMenuIds)) {
-            userRoleMapper.deleteListByUserIdAndRoleIdIds(userId, deleteMenuIds);
+        if (!CollectionUtil.isEmpty(deleteRoleIds)) {
+            userRoleMapper.deleteListByUserIdAndRoleIdIds(userId, deleteRoleIds);
         }
         // 发送刷新消息. 注意，需要事务提交后，在进行发送刷新消息。不然 db 还未提交，结果缓存先刷新了
         TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronization() {

@@ -96,7 +96,7 @@ public class UserController {
             return success(new PageResult<>(pageResult.getTotal())); // 返回空
         }
 
-        // 获得拼接需要的数据
+        // 获得拼接需要的数据（部门信息）
         Collection<Long> deptIds = convertList(pageResult.getList(), AdminUserDO::getDeptId);
         Map<Long, DeptDO> deptMap = deptService.getDeptMap(deptIds);
         // 拼接结果返回

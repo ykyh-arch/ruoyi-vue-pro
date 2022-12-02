@@ -15,12 +15,12 @@ import javax.validation.constraints.Size;
 @Data
 public class DeptBaseVO {
 
-    @ApiModelProperty(value = "菜单名称", required = true, example = "芋道")
+    @ApiModelProperty(value = "部门名称", required = true, example = "芋道")
     @NotBlank(message = "部门名称不能为空")
     @Size(max = 30, message = "部门名称长度不能超过30个字符")
     private String name;
 
-    @ApiModelProperty(value = "父菜单 ID", example = "1024")
+    @ApiModelProperty(value = "父部门 ID", example = "1024")
     private Long parentId;
 
     @ApiModelProperty(value = "显示顺序不能为空", required = true, example = "1024")

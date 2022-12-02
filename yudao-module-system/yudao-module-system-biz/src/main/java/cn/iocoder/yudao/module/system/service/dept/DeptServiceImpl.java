@@ -89,9 +89,9 @@ public class DeptServiceImpl implements DeptService {
         // 构建缓存
         ImmutableMap.Builder<Long, DeptDO> builder = ImmutableMap.builder();
         ImmutableMultimap.Builder<Long, DeptDO> parentBuilder = ImmutableMultimap.builder();
-        deptList.forEach(sysRoleDO -> {
-            builder.put(sysRoleDO.getId(), sysRoleDO);
-            parentBuilder.put(sysRoleDO.getParentId(), sysRoleDO);
+        deptList.forEach(deptDO -> {
+            builder.put(deptDO.getId(), deptDO);
+            parentBuilder.put(deptDO.getParentId(), deptDO);
         });
         // 设置缓存
         deptCache = builder.build();
@@ -126,6 +126,12 @@ public class DeptServiceImpl implements DeptService {
         return deptMapper.selectList();
     }
 
+    /**
+     * 添加部门
+     *
+     * @param reqVO 部门信息
+     * @return
+     */
     @Override
     public Long createDept(DeptCreateReqVO reqVO) {
         // 校验正确性
@@ -174,6 +180,13 @@ public class DeptServiceImpl implements DeptService {
         return deptMapper.selectList(reqVO);
     }
 
+    /**
+     * 获得所有子部门，从缓存中
+     *
+     * @param parentId 部门编号
+     * @param recursive 是否递归获取所有
+     * @return
+     */
     @Override
     public List<DeptDO> getDeptsByParentIdFromCache(Long parentId, boolean recursive) {
         if (parentId == null) {
@@ -212,6 +225,13 @@ public class DeptServiceImpl implements DeptService {
                 recursiveCount - 1, parentDeptMap));
     }
 
+    /**
+     * 检验正确性
+     *
+     * @param id
+     * @param parentId
+     * @param name
+     */
     private void checkCreateOrUpdate(Long id, Long parentId, String name) {
         // 校验自己存在
         checkDeptExists(id);
@@ -222,6 +242,7 @@ public class DeptServiceImpl implements DeptService {
     }
 
     private void checkParentDeptEnable(Long id, Long parentId) {
+        // 根部门
         if (parentId == null || DeptIdEnum.ROOT.getId().equals(parentId)) {
             return;
         }
@@ -260,7 +281,7 @@ public class DeptServiceImpl implements DeptService {
         if (menu == null) {
             return;
         }
-        // 如果 id 为空，说明不用比较是否为相同 id 的岗位
+        // 如果 id 为空，说明不用比较是否为相同 id 的部门
         if (id == null) {
             throw ServiceExceptionUtil.exception(DEPT_NAME_DUPLICATE);
         }
@@ -284,11 +305,12 @@ public class DeptServiceImpl implements DeptService {
         if (CollUtil.isEmpty(ids)) {
             return;
         }
-        // 获得科室信息
+        // 获得部门信息
         List<DeptDO> depts = deptMapper.selectBatchIds(ids);
         Map<Long, DeptDO> deptMap = CollectionUtils.convertMap(depts, DeptDO::getId);
         // 校验
         ids.forEach(id -> {
+            // 从 Map 结构取数据比从 DB 查询性能优秀的多
             DeptDO dept = deptMap.get(id);
             if (dept == null) {
                 throw exception(DEPT_NOT_FOUND);

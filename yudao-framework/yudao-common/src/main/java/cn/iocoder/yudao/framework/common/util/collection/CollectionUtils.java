@@ -96,6 +96,7 @@ public class CollectionUtils {
         return convertMap(from, keyFunc, valueFunc, (v1, v2) -> v1);
     }
 
+    // BinaryOperator 使用参数：https://www.cnblogs.com/lijingran/p/8672861.html
     public static <T, K, V> Map<K, V> convertMap(Collection<T> from, Function<T, K> keyFunc, Function<T, V> valueFunc, BinaryOperator<V> mergeFunction) {
         if (CollUtil.isEmpty(from)) {
             return new HashMap<>();

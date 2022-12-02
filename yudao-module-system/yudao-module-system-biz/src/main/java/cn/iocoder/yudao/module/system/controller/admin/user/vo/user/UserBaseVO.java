@@ -19,7 +19,7 @@ public class UserBaseVO {
 
     @ApiModelProperty(value = "用户账号", required = true, example = "yudao")
     @NotBlank(message = "用户账号不能为空")
-    @Pattern(regexp = "^[a-zA-Z0-9]{4,30}$", message = "用户账号由 数字、字母 组成")
+    @Pattern(regexp = "^[a-zA-Z0-9]{4,30}$", message = "用户账号由数字、字母 组成")
     @Size(min = 4, max = 30, message = "用户账号长度为 4-30 个字符")
     private String username;
 

@@ -88,6 +88,9 @@ public class DictTypeServiceImpl implements DictTypeService {
         return dictTypeMapper.selectList();
     }
 
+    /**
+     * 检验正确性
+     */
     private void checkCreateOrUpdate(Long id, String name, String type) {
         // 校验自己存在
         checkDictTypeExists(id);

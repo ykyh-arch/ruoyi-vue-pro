@@ -70,6 +70,9 @@ public class AdminAuthServiceImpl implements AdminAuthService {
     @Value("${yudao.captcha.enable:true}")
     private Boolean captchaEnable;
 
+    /**
+     * 登录认证
+     */
     @Override
     public AdminUserDO authenticate(String username, String password) {
         final LoginLogTypeEnum logTypeEnum = LoginLogTypeEnum.LOGIN_USERNAME;
@@ -133,6 +136,9 @@ public class AdminAuthServiceImpl implements AdminAuthService {
         return createTokenAfterLoginSuccess(user.getId(), reqVO.getMobile(), LoginLogTypeEnum.LOGIN_MOBILE);
     }
 
+    /**
+     * 登录日志记录
+     */
     private void createLoginLog(Long userId, String username,
                                 LoginLogTypeEnum logTypeEnum, LoginResultEnum loginResult) {
         // 插入登录日志
@@ -196,6 +202,9 @@ public class AdminAuthServiceImpl implements AdminAuthService {
         }
     }
 
+    /**
+     * 记录登录成功日志以及返回 token
+     */
     private AuthLoginRespVO createTokenAfterLoginSuccess(Long userId, String username, LoginLogTypeEnum logType) {
         // 插入登陆日志
         createLoginLog(userId, username, logType, LoginResultEnum.SUCCESS);

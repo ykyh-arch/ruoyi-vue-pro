@@ -106,7 +106,9 @@ public class DictDataServiceImpl implements DictDataService {
         return dictDataMapper.selectCountByDictType(dictType);
     }
 
-
+    /**
+     * 校验正确性
+     */
     private void checkCreateOrUpdate(Long id, String value, String dictType) {
         // 校验自己存在
         checkDictDataExists(id);

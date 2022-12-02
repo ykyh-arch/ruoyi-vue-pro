@@ -108,7 +108,7 @@ public interface PermissionService {
     void processMenuDeleted(Long menuId);
 
     /**
-     * 处理用户删除是，删除关联授权数据
+     * 处理用户删除时，删除关联授权数据
      *
      * @param userId 用户编号
      */
