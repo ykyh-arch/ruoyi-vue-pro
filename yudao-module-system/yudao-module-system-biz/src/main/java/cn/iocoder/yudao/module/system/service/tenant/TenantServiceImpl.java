@@ -180,8 +180,9 @@ public class TenantServiceImpl implements TenantService {
     public void deleteTenant(Long id) {
         // 校验存在
         checkUpdateTenant(id);
-        // 删除
+        // 标记删除
         tenantMapper.deleteById(id);
+        // TODO：删除相关数据
     }
 
     private TenantDO checkUpdateTenant(Long id) {

@@ -204,6 +204,7 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public List<MenuDO> getTenantMenus(MenuListReqVO reqVO) {
+        // 开启状态系统菜单（跟租户无关），全量菜单
         List<MenuDO> menus = getMenus(reqVO);
         // 开启多租户的情况下，需要过滤掉未开通的菜单
         tenantService.handleTenantMenu(menuIds -> menus.removeIf(menu -> !CollUtil.contains(menuIds, menu.getId())));

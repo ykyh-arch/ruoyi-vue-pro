@@ -138,6 +138,7 @@ public class DeptServiceImpl implements DeptService {
         if (reqVO.getParentId() == null) {
             reqVO.setParentId(DeptIdEnum.ROOT.getId());
         }
+        // 检查合法性
         checkCreateOrUpdate(null, reqVO.getParentId(), reqVO.getName());
         // 插入部门
         DeptDO dept = DeptConvert.INSTANCE.convert(reqVO);
@@ -153,6 +154,7 @@ public class DeptServiceImpl implements DeptService {
         if (reqVO.getParentId() == null) {
             reqVO.setParentId(DeptIdEnum.ROOT.getId());
         }
+        // 检查合法性
         checkCreateOrUpdate(reqVO.getId(), reqVO.getParentId(), reqVO.getName());
         // 更新部门
         DeptDO updateObj = DeptConvert.INSTANCE.convert(reqVO);
