@@ -64,6 +64,7 @@ class DeptDataPermissionRuleTest extends BaseMockitoUnitTest {
 
     @Test // 无数据权限时
     public void testGetExpression_noDeptDataPermission() {
+        // mockStatic 模拟静态方法调用
         try (MockedStatic<SecurityFrameworkUtils> securityFrameworkUtilsMock
                      = mockStatic(SecurityFrameworkUtils.class)) {
             // 准备参数

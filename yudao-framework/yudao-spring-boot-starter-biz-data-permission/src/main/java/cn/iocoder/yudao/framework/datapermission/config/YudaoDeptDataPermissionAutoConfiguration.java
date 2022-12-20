@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 
 /**
- * 基于部门的数据权限 AutoConfiguration
+ * 基于部门的数据权限 AutoConfiguration，可以参考若依数据权限实现过程，比较两者差异：https://blog.csdn.net/m0_52134610/article/details/124122393
  *
  * @author 芋道源码
  */

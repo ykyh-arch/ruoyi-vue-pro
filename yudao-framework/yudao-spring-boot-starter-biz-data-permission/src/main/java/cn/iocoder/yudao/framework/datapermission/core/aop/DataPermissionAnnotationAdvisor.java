@@ -10,7 +10,7 @@ import org.springframework.aop.support.ComposablePointcut;
 import org.springframework.aop.support.annotation.AnnotationMatchingPointcut;
 
 /**
- * {@link cn.iocoder.yudao.framework.datapermission.core.annotation.DataPermission} 注解的 Advisor 实现类
+ * {@link cn.iocoder.yudao.framework.datapermission.core.annotation.DataPermission} 注解的 Advisor 实现类，参考：https://blog.csdn.net/universsky2015/article/details/115370405
  *
  * @author 芋道源码
  */
@@ -23,6 +23,7 @@ public class DataPermissionAnnotationAdvisor extends AbstractPointcutAdvisor {
     private final Pointcut pointcut;
 
     public DataPermissionAnnotationAdvisor() {
+        // 以下表示当类与方法都添加了 DataPermission 注解时，走 DataPermissionAnnotationInterceptor 拦截器
         this.advice = new DataPermissionAnnotationInterceptor();
         this.pointcut = this.buildPointcut();
     }

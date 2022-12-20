@@ -100,6 +100,9 @@ public class DataPermissionDatabaseInterceptor extends JsqlParserSupport impleme
         }
     }
 
+    /**
+     * Select 语句处理
+     */
     @Override
     protected void processSelect(Select select, int index, String sql, Object obj) {
         processSelectBody(select.getSelectBody());
