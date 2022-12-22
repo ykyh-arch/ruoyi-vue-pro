@@ -2,6 +2,7 @@ package cn.iocoder.yudao.module.visualization.framework.jmreport.core.service;
 
 import cn.hutool.core.util.StrUtil;
 import cn.iocoder.yudao.framework.common.exception.ServiceException;
+import cn.iocoder.yudao.framework.common.util.object.ObjectUtils;
 import cn.iocoder.yudao.framework.security.core.LoginUser;
 import cn.iocoder.yudao.framework.security.core.util.SecurityFrameworkUtils;
 import cn.iocoder.yudao.framework.tenant.core.context.TenantContextHolder;
@@ -10,6 +11,8 @@ import cn.iocoder.yudao.module.system.api.oauth2.OAuth2TokenApi;
 import cn.iocoder.yudao.module.system.api.oauth2.dto.OAuth2AccessTokenCheckRespDTO;
 import lombok.RequiredArgsConstructor;
 import org.jeecg.modules.jmreport.api.JmReportTokenServiceI;
+
+import java.util.Objects;
 
 /**
  * {@link JmReportTokenServiceI} 实现类，提供积木报表的 Token 校验、用户信息的查询等功能
@@ -70,7 +73,9 @@ public class JmReportTokenServiceImpl implements JmReportTokenServiceI {
      */
     @Override
     public String getUsername(String token) {
-        Long userId = SecurityFrameworkUtils.getLoginUserId();
+        OAuth2AccessTokenCheckRespDTO accessToken = oauth2TokenApi.checkAccessToken(token);
+        Long userId = ObjectUtils.defaultIfNull(SecurityFrameworkUtils.getLoginUserId(),
+                Objects.nonNull(accessToken) ? accessToken.getUserId() : null);
         return userId != null ? String.valueOf(userId) : null;
     }
 

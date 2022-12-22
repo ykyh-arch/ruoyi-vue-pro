@@ -1,6 +1,7 @@
 package cn.iocoder.yudao.framework.errorcode.core.loader;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
 import cn.iocoder.yudao.framework.common.util.date.DateUtils;
 import cn.iocoder.yudao.module.system.api.errorcode.ErrorCodeApi;
 import cn.iocoder.yudao.module.system.api.errorcode.dto.ErrorCodeRespDTO;
@@ -66,8 +67,10 @@ public class ErrorCodeLoaderImpl implements ErrorCodeLoader {
             // 写入到错误码的缓存
             putErrorCode(errorCodeRespDTO.getCode(), errorCodeRespDTO.getMessage());
             // 记录下更新时间，方便增量更新
-            maxUpdateTime = DateUtils.max(maxUpdateTime, errorCodeRespDTO.getUpdateTime());
+            // maxUpdateTime = DateUtils.max(maxUpdateTime, errorCodeRespDTO.getUpdateTime());
         });
+        // 记录下更新时间，方便增量更新
+        maxUpdateTime = CollectionUtils.getMaxValue(errorCodeRespDTOs, ErrorCodeRespDTO::getUpdateTime);
     }
 
 }

@@ -5,7 +5,7 @@ import cn.hutool.core.collection.CollUtil;
 import java.util.*;
 
 /**
- * 基于前缀树，实现敏感词的校验
+ * 基于前缀树，实现敏感词的校验，可以参考：{@see https://github.com/ykyh-arch/SpringBoot-Labs/tree/Jaquez/lab-85-datamask} 实现方式
  * <p>
  * 相比 Apache Common 提供的 PatriciaTrie 来说，性能可能会更加好一些。
  *
