@@ -122,6 +122,7 @@ public class OAuth2TokenServiceImpl implements OAuth2TokenService {
             return null;
         }
         oauth2AccessTokenMapper.deleteById(accessTokenDO.getId());
+        // 清除缓存
         oauth2AccessTokenRedisDAO.delete(accessToken);
         // 删除刷新令牌
         oauth2RefreshTokenMapper.deleteByRefreshToken(accessTokenDO.getRefreshToken());

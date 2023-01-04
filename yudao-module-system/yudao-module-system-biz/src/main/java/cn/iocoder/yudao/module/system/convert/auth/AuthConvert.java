@@ -43,7 +43,7 @@ public interface AuthConvert {
         // 排序，保证菜单的有序性
         menuList.sort(Comparator.comparing(MenuDO::getSort));
         // 构建菜单树
-        // 使用 LinkedHashMap 的原因，是为了排序 。实际也可以用 Stream API ，就是太丑了。
+        // 使用 LinkedHashMap 的原因，是为了排序。实际也可以用 Stream API ，就是太丑了。
         Map<Long, AuthMenuRespVO> treeNodeMap = new LinkedHashMap<>();
         menuList.forEach(menu -> treeNodeMap.put(menu.getId(), AuthConvert.INSTANCE.convertTreeNode(menu)));
         // 处理父子关系
@@ -51,7 +51,7 @@ public interface AuthConvert {
             // 获得父节点
             AuthMenuRespVO parentNode = treeNodeMap.get(childNode.getParentId());
             if (parentNode == null) {
-                LoggerFactory.getLogger(getClass()).error("[buildRouterTree][resource({}) 找不到父资源({})]",
+                LoggerFactory.getLogger(getClass()).error("[buildMenuTree][resource({}) 找不到父资源({})]",
                     childNode.getId(), childNode.getParentId());
                 return;
             }

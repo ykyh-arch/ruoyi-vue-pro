@@ -1,6 +1,7 @@
 package cn.iocoder.yudao.module.system.dal.dataobject.sms;
 
 import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.module.system.enums.sms.SmsSceneEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
@@ -38,7 +39,7 @@ public class SmsCodeDO extends BaseDO {
     /**
      * 发送场景
      *
-     * 枚举 {@link SmsCodeDO}
+     * 枚举 {@link SmsSceneEnum}
      */
     private Integer scene;
     /**

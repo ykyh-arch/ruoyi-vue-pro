@@ -16,7 +16,7 @@ import java.util.List;
 @Builder
 public class AuthMenuRespVO {
 
-    @ApiModelProperty(value = "菜单名称", required = true, example = "芋道")
+    @ApiModelProperty(value = "菜单编号", required = true, example = "芋道")
     private Long id;
 
     @ApiModelProperty(value = "父菜单 ID", required = true, example = "1024")
@@ -41,7 +41,7 @@ public class AuthMenuRespVO {
     private Boolean keepAlive;
 
     /**
-     * 子路由
+     * 子菜单
      */
     private List<AuthMenuRespVO> children;
 
