@@ -74,15 +74,15 @@ public class OAuth2ClientServiceImpl implements OAuth2ClientService {
     @PostConstruct
     public void initLocalCache() {
         // 获取客户端列表，如果有更新
-        List<OAuth2ClientDO> tenantList = loadOAuth2ClientIfUpdate(maxUpdateTime);
-        if (CollUtil.isEmpty(tenantList)) {
+        List<OAuth2ClientDO> oAuth2ClientDOList = loadOAuth2ClientIfUpdate(maxUpdateTime);
+        if (CollUtil.isEmpty(oAuth2ClientDOList)) {
             return;
         }
 
         // 写入缓存
-        clientCache = convertMap(tenantList, OAuth2ClientDO::getClientId);
-        maxUpdateTime = getMaxValue(tenantList, OAuth2ClientDO::getUpdateTime);
-        log.info("[initLocalCache][初始化 OAuth2Client 数量为 {}]", tenantList.size());
+        clientCache = convertMap(oAuth2ClientDOList, OAuth2ClientDO::getClientId);
+        maxUpdateTime = getMaxValue(oAuth2ClientDOList, OAuth2ClientDO::getUpdateTime);
+        log.info("[initLocalCache][初始化 OAuth2Client 数量为 {}]", oAuth2ClientDOList.size());
     }
 
     @Scheduled(fixedDelay = SCHEDULER_PERIOD, initialDelay = SCHEDULER_PERIOD)

@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  *
  * @author 星语
  */
-@NoArgsConstructor // 保证 aj-captcha 的 SPI 创建
+@NoArgsConstructor // 保证 aj-captcha 的 SPI 创建，SPI 参考：https://blog.csdn.net/qq_16498553/article/details/108176139
 @AllArgsConstructor
 public class RedisCaptchaServiceImpl implements CaptchaCacheService {
 
