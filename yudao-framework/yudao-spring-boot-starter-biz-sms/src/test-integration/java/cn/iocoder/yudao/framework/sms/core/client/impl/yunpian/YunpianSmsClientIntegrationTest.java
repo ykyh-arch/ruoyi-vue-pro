@@ -39,7 +39,7 @@ public class YunpianSmsClientIntegrationTest {
         templateParams.add(new KeyValue<>("code", "1024"));
         templateParams.add(new KeyValue<>("operation", "嘿嘿"));
 //        SmsResult result = smsClient.send(1L, "15601691399", "4372216", templateParams);
-        SmsCommonResult<SmsSendRespDTO> result = smsClient.sendSms(1L, "15601691399", "4383920", templateParams);
+        SmsCommonResult<SmsSendRespDTO> result = smsClient.sendSms(1L, "18225529115", "4383920", templateParams);
         System.out.println(result);
     }
 

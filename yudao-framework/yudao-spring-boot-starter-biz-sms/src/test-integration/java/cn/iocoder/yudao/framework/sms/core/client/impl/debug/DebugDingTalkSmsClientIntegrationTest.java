@@ -26,8 +26,10 @@ public class DebugDingTalkSmsClientIntegrationTest {
         properties.setId(1L);
         properties.setSignature("芋道");
         properties.setCode(SmsChannelEnum.DEBUG_DING_TALK.getCode());
-        properties.setApiKey("696b5d8ead48071237e4aa5861ff08dbadb2b4ded1c688a7b7c9afc615579859");
-        properties.setApiSecret("SEC5c4e5ff888bc8a9923ae47f59e7ccd30af1f14d93c55b4e2c9cb094e35aeed67");
+        // properties.setApiKey("696b5d8ead48071237e4aa5861ff08dbadb2b4ded1c688a7b7c9afc615579859");
+        // properties.setApiSecret("SEC5c4e5ff888bc8a9923ae47f59e7ccd30af1f14d93c55b4e2c9cb094e35aeed67");
+        properties.setApiKey("94b9c478fcfc63868029e4d8a4f03f5150d69086be7e42d066790817f3302c4b");
+        properties.setApiSecret("SECaf6e7a329ca605c0f0bf5a677d1c58f97b31a4b2bf301cc5237b08f05736be0a");
         // 创建客户端
         smsClient = new DebugDingTalkSmsClient(properties);
         smsClient.init();
@@ -39,7 +41,7 @@ public class DebugDingTalkSmsClientIntegrationTest {
         templateParams.add(new KeyValue<>("code", "1024"));
         templateParams.add(new KeyValue<>("operation", "嘿嘿"));
 //        SmsResult result = smsClient.send(1L, "15601691399", "4372216", templateParams);
-        SmsCommonResult<SmsSendRespDTO> result = smsClient.sendSms(1L, "15601691399", "4383920", templateParams);
+        SmsCommonResult<SmsSendRespDTO> result = smsClient.sendSms(1L, "18225529115", "4383920", templateParams);
         System.out.println(result);
     }
 
