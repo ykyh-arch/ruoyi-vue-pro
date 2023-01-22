@@ -77,10 +77,10 @@ public class BpmProcessInstanceRespVO {
         @ApiModelProperty(value = "表单编号", example = "1024", notes = "在表单类型为 {@link BpmModelFormTypeEnum#CUSTOM} 时，必须非空")
         private Long formId;
         @ApiModelProperty(value = "表单的配置", required = true,
-                notes = "JSON 字符串。在表单类型为 {@link BpmModelFormTypeEnum#CUSTOM} 时，必须非空")
+                notes = "JSON 字符串。在表单类型为 {@link BpmModelFormTypeEnum#NORMAL} 时，必须非空")
         private String formConf;
         @ApiModelProperty(value = "表单项的数组", required = true,
-                notes = "JSON 字符串的数组。在表单类型为 {@link BpmModelFormTypeEnum#CUSTOM} 时，必须非空")
+                notes = "JSON 字符串的数组。在表单类型为 {@link BpmModelFormTypeEnum#NORMAL} 时，必须非空")
         private List<String> formFields;
         @ApiModelProperty(value = "自定义表单的提交路径，使用 Vue 的路由地址", example = "/bpm/oa/leave/create",
                 notes = "在表单类型为 {@link BpmModelFormTypeEnum#CUSTOM} 时，必须非空")

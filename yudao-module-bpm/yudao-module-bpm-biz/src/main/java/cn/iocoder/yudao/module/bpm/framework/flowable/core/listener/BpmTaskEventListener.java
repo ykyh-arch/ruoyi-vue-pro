@@ -37,6 +37,7 @@ public class BpmTaskEventListener extends AbstractFlowableEngineEventListener {
     @Lazy // 解决循环依赖
     private BpmActivityService activityService;
 
+    // 分别对应流程任务创建、任务分配、任务完成（审批通过）、活动实例取消（任务取消）
     public static final Set<FlowableEngineEventType> TASK_EVENTS = ImmutableSet.<FlowableEngineEventType>builder()
             .add(FlowableEngineEventType.TASK_CREATED)
             .add(FlowableEngineEventType.TASK_ASSIGNED)

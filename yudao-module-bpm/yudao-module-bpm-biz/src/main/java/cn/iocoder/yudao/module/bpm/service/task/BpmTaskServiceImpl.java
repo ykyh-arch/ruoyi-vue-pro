@@ -260,7 +260,7 @@ public class BpmTaskServiceImpl implements BpmTaskService {
 
             @Override
             public void afterCommit() {
-                // 可能只是活动，不是任务，所以查询不到
+                // 可能只是活动（可能是子流程、或任务），不是任务，所以查询不到，参考：https://www.cnblogs.com/sea520/p/13321329.html
                 HistoricTaskInstance task = getHistoricTask(taskId);
                 if (task == null) {
                     return;

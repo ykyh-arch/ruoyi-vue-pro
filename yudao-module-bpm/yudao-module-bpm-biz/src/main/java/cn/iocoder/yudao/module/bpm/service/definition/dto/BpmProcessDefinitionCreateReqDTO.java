@@ -85,7 +85,7 @@ public class BpmProcessDefinitionCreateReqDTO {
 
     @AssertTrue(message = "流程表单信息不全")
     public boolean isNormalFormTypeValid() {
-        // 如果非业务表单，则直接通过
+        // 如果非流程表单，则直接通过
         if (!Objects.equals(formType, BpmModelFormTypeEnum.NORMAL.getType())) {
             return true;
         }

@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * 流程实例的结果
+ * 流程实例的结果（包含流程任务结果）
  *
  * @author jason
  */

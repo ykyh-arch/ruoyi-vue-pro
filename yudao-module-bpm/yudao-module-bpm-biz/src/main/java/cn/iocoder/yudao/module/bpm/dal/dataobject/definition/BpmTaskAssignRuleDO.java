@@ -15,7 +15,7 @@ import java.util.Set;
  * Bpm 任务分配的规则表，用于自定义配置每个任务的负责人、候选人的分配规则。
  * 也就是说，废弃 BPMN 原本的 UserTask 设置的 assignee、candidateUsers 等配置，而是通过使用该规则进行计算对应的负责人。
  *
- * 1. 默认情况下，{@link #processDefinitionId} 为 {@link #PROCESS_DEFINITION_ID_NULL} 值，表示贵改则与流程模型关联
+ * 1. 默认情况下，{@link #processDefinitionId} 为 {@link #PROCESS_DEFINITION_ID_NULL} 值，表示该规则与流程模型关联
  * 2. 在流程模型部署后，会将他的所有规则记录，复制出一份新部署出来的流程定义，通过设置 {@link #processDefinitionId} 为新的流程定义的编号进行关联
  *
  * @author 芋道源码

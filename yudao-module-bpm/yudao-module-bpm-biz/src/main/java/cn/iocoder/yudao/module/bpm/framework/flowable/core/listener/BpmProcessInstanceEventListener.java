@@ -26,6 +26,7 @@ public class BpmProcessInstanceEventListener extends AbstractFlowableEngineEvent
     @Lazy
     private BpmProcessInstanceService processInstanceService;
 
+    // 分别对应流程创建、流程取消（不包括不通过）、流程完成（通过）
     public static final Set<FlowableEngineEventType> PROCESS_INSTANCE_EVENTS = ImmutableSet.<FlowableEngineEventType>builder()
                      .add(FlowableEngineEventType.PROCESS_CREATED)
                      .add(FlowableEngineEventType.PROCESS_CANCELLED)

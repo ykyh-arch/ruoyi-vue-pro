@@ -122,6 +122,7 @@ public class BpmFormServiceImpl implements BpmFormService {
         for (String field : fields) {
             BpmFormFieldRespDTO fieldDTO = JsonUtils.parseObject(field, BpmFormFieldRespDTO.class);
             Assert.notNull(fieldDTO);
+            // put（）容器中不存在key返回为null，反之返回为旧值
             String oldLabel = fieldMap.put(fieldDTO.getVModel(), fieldDTO.getLabel());
             // 如果不存在，则直接返回
             if (oldLabel == null) {

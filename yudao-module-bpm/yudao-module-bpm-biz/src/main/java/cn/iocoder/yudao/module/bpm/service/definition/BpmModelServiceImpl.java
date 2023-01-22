@@ -60,6 +60,7 @@ public class BpmModelServiceImpl implements BpmModelService {
 
     @Override
     public PageResult<BpmModelPageItemRespVO> getModelPage(BpmModelPageReqVO pageVO) {
+        // 构建Model查询参数
         ModelQuery modelQuery = repositoryService.createModelQuery();
         if (StrUtil.isNotBlank(pageVO.getKey())) {
             modelQuery.modelKey(pageVO.getKey());
@@ -250,7 +251,7 @@ public class BpmModelServiceImpl implements BpmModelService {
         if (metaInfo == null || metaInfo.getFormType() == null) {
             throw exception(MODEL_DEPLOY_FAIL_FORM_NOT_CONFIG);
         }
-        // 校验表单存在
+        // 校验表单存在，流程表单
         if (Objects.equals(metaInfo.getFormType(), BpmModelFormTypeEnum.NORMAL.getType())) {
             BpmFormDO form = bpmFormService.getForm(metaInfo.getFormId());
             if (form == null) {

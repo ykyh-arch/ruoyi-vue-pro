@@ -11,6 +11,10 @@
 
     <artifactId>yudao-spring-boot-starter-flowable</artifactId>
 
+    <name>${project.artifactId}</name>
+    <description>工作流 flowable 拓展</description>
+    <url>https://github.com/YunaiV/ruoyi-vue-pro</url>
+
     <dependencies>
         <dependency>
             <groupId>cn.iocoder.boot</groupId>
