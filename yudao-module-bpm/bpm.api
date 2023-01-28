@@ -1,0 +1,68 @@
+Version - 流程版本 -> act_ge_property、act_id_property
+Model - 流程模型 -> act_re_model
+BpmModel - 流程模型（包含流程设计数据） -> act_ge_bytearray
+EditorSource - 流程设计数据  -> act_ge_bytearray
+Deployment - 流程部署 -> act_re_deployment
+ProcessDefinition - 部署后产生新的流程定义（流程定义有多个） -> act_re_procdef、bpm_process_definition_ext
+ProcessInstance - 流程实例 -> act_ru_actinst、act_hi_procinst、act_hi_actinst、bpm_process_instance_ext 
+Task - 流程任务 -> act_ru_task、act_hi_taskinst、bpm_task_ext
+// 保存Model
+repositoryService.newModel();
+repositoryService.saveModel(model);
+// 查询Model
+repositoryService.getModel(id);
+// 查询ModelEditorSource
+byte[]bpmnBytes = repositoryService.getModelEditorSource(id);
+// 获取BpmnModel
+converter.convertToBpmnModel(new BytesStreamSource(bpmnBytes), true, true);
+byte[] bpmnBytes = converter.convertToXML(bpmnModel);
+repositoryService.getBpmnModel(processDefinitionId);
+// 添加Model对应的EditorSource
+repositoryService.addModelEditorSource(model.getId(), StrUtil.utf8Bytes(bpmnXml));
+// 构建Model查询参数
+repositoryService.createModelQuery();
+// 构建Model查询参数且根据主键查询
+repositoryService.createModelQuery().modelKey(key).singleResult();
+// 查询Model分页
+modelQuery.listPage(PageUtils.getStart(pageVO), pageVO.getPageSize());
+// 构建Deployment查询参数且根据主键查询
+repositoryService.createDeploymentQuery().deploymentId(id).singleResult();
+// 构建ProcessDefinition查询参数且根据deploymentIds查询
+repositoryService.createProcessDefinitionQuery().deploymentIds(deploymentIds).list();
+repositoryService.createProcessDefinitionQuery().deploymentId(deploymentId).singleResult();
+repositoryService.createProcessDefinitionQuery().processDefinitionId(id).singleResult();
+// 构建ProcessDefinition查询参数且根据processDefinitionKey查询
+repositoryService.createProcessDefinitionQuery().processDefinitionKey(key).active().singleResult();
+// 查询ProcessDefinition分页
+definitionQuery.orderByProcessDefinitionVersion().desc().listPage(PageUtils.getStart(pageVO), pageVO.getPageSize());
+// 构建ProcessDefinition
+repositoryService.getProcessDefinition(id);
+// 构建Deployment部署
+repositoryService.createDeployment()
+                .key(createReqDTO.getKey()).name(createReqDTO.getName()).category(createReqDTO.getCategory())
+                .addBytes(createReqDTO.getKey() + BPMN_FILE_SUFFIX, createReqDTO.getBpmnBytes())
+                .deploy();
+// 获取Deployment
+repositoryService.createDeploymentQuery().deploymentId(id).singleResult();
+// 流程挂起
+repositoryService.suspendProcessDefinitionById(id, false, null);
+// 流程激活
+repositoryService.activateProcessDefinitionById(id, false, null);
+// 构建ProcessDefinition
+repositoryService.getProcessDefinition(id);
+// 构建开启ProcessInstance
+runtimeService.startProcessInstanceById(definition.getId(), businessKey, variables);
+// 构建ProcessInstance
+runtimeService.createProcessInstanceQuery().processInstanceId(id).singleResult();
+// 删除ProcessInstance
+runtimeService.deleteProcessInstance(id, reason);
+// 构建HistoricProcessInstance
+historyService.createHistoricProcessInstanceQuery().processInstanceId(id).singleResult();
+// 构建HistoricProcessInstance
+historyService.createHistoricActivityInstanceQuery().executionId(executionId).list();
+// 构建HistoricTaskInstance
+historyService.createHistoricTaskInstanceQuery().taskId(id).singleResult();
+// 构建HistoricTaskInstance列表
+historyService.createHistoricTaskInstanceQuery().processInstanceId(processInstanceId).orderByHistoricTaskInstanceStartTime().desc().list();
+// 构建HistoricActivityInstance列表
+historyService.createHistoricActivityInstanceQuery().processInstanceId(processInstanceId).list();                
