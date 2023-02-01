@@ -38,10 +38,7 @@ definitionQuery.orderByProcessDefinitionVersion().desc().listPage(PageUtils.getS
 // 构建ProcessDefinition
 repositoryService.getProcessDefinition(id);
 // 构建Deployment部署
-repositoryService.createDeployment()
-                .key(createReqDTO.getKey()).name(createReqDTO.getName()).category(createReqDTO.getCategory())
-                .addBytes(createReqDTO.getKey() + BPMN_FILE_SUFFIX, createReqDTO.getBpmnBytes())
-                .deploy();
+repositoryService.createDeployment().key(key).name(name).category(category).addBytes(key + BPMN_FILE_SUFFIX, createReqDTO.getBpmnBytes()).deploy();
 // 获取Deployment
 repositoryService.createDeploymentQuery().deploymentId(id).singleResult();
 // 流程挂起
@@ -54,6 +51,7 @@ repositoryService.getProcessDefinition(id);
 runtimeService.startProcessInstanceById(definition.getId(), businessKey, variables);
 // 构建ProcessInstance
 runtimeService.createProcessInstanceQuery().processInstanceId(id).singleResult();
+runtimeService.createProcessInstanceQuery().processInstanceIds(ids).list();
 // 删除ProcessInstance
 runtimeService.deleteProcessInstance(id, reason);
 // 构建HistoricProcessInstance
@@ -65,4 +63,14 @@ historyService.createHistoricTaskInstanceQuery().taskId(id).singleResult();
 // 构建HistoricTaskInstance列表
 historyService.createHistoricTaskInstanceQuery().processInstanceId(processInstanceId).orderByHistoricTaskInstanceStartTime().desc().list();
 // 构建HistoricActivityInstance列表
-historyService.createHistoricActivityInstanceQuery().processInstanceId(processInstanceId).list();                
+historyService.createHistoricActivityInstanceQuery().processInstanceId(processInstanceId).list(); 
+// 构建Task列表
+taskService.createTaskQuery().processInstanceIdIn(processInstanceIds).list();
+// 构建TaskQuery且分页查询我的待办任务列表 
+taskService.createTaskQuery().taskAssignee(userId).orderByTaskCreateTime().desc().listPage(pageNum, pageSize);
+// 构建TaskQuery且分页查询我的已办任务列表
+historyService.createHistoricTaskInstanceQuery().finished().taskAssignee(userId).orderByHistoricTaskInstanceEndTime().desc().listPage(pageNum, pageSize);        
+// 构建Task
+taskService.createTaskQuery().taskId(id).singleResult();
+// 通过审批Task
+taskService.complete(taskId, instance.getProcessVariables());                 
