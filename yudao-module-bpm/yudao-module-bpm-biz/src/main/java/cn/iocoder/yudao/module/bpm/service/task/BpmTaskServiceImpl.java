@@ -298,8 +298,8 @@ public class BpmTaskServiceImpl implements BpmTaskService {
                 ProcessInstance processInstance =
                     processInstanceService.getProcessInstance(task.getProcessInstanceId());
                 AdminUserRespDTO startUser = adminUserApi.getUser(Long.valueOf(processInstance.getStartUserId()));
-                messageService.sendMessageWhenTaskAssigned(
-                    BpmTaskConvert.INSTANCE.convert(processInstance, startUser, task));
+                // 临时关闭消息提醒
+                // messageService.sendMessageWhenTaskAssigned(BpmTaskConvert.INSTANCE.convert(processInstance, startUser, task));
             }
         });
     }

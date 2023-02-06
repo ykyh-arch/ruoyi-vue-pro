@@ -38,7 +38,7 @@ public class BpmOALeaveController {
 
     @PostMapping("/create")
     @PreAuthorize("@ss.hasPermission('bpm:oa-leave:create')")
-    @ApiOperation("创建请求申请")
+    @ApiOperation("创建请假申请")
     public CommonResult<Long> createLeave(@Valid @RequestBody BpmOALeaveCreateReqVO createReqVO) {
         return success(leaveService.createLeave(getLoginUserId(), createReqVO));
     }

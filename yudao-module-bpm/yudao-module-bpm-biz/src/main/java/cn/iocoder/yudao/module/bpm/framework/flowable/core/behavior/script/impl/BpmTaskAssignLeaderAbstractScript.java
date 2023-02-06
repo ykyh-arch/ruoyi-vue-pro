@@ -39,7 +39,7 @@ public abstract class BpmTaskAssignLeaderAbstractScript implements BpmTaskAssign
         // 获得发起人
         ProcessInstance processInstance = bpmProcessInstanceService.getProcessInstance(execution.getProcessInstanceId());
         Long startUserId = NumberUtils.parseLong(processInstance.getStartUserId());
-        // 获得对应 leve 的部门
+        // 获得对应 level 的部门
         DeptRespDTO dept = null;
         for (int i = 0; i < level; i++) {
             // 获得 level 对应的部门

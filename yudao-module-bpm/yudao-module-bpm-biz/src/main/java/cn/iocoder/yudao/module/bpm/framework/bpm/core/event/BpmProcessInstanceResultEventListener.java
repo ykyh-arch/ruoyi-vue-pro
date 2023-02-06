@@ -4,7 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import org.springframework.context.ApplicationListener;
 
 /**
- * {@link BpmProcessInstanceResultEvent} 的监听器
+ * {@link BpmProcessInstanceResultEvent} 的监听器，触发事件后由业务层具体实现该业务的实际逻辑
  *
  * @author 芋道源码
  */

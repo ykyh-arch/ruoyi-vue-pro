@@ -31,6 +31,7 @@ public class BpmParallelMultiInstanceBehavior extends ParallelMultiInstanceBehav
     }
 
     /**
+     * 处理实例数量 Nr 是 Number 的缩写
      * 重写该方法，主要实现两个功能：
      * 1. 忽略原有的 collectionVariable、collectionElementVariable 表达式，而是采用自己定义的
      * 2. 获得任务的处理人，并设置到 collectionVariable 中，用于 BpmUserTaskActivityBehavior 从中可以获取任务的处理人

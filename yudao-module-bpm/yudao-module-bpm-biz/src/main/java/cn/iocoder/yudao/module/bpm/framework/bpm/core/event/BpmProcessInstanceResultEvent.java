@@ -22,7 +22,7 @@ public class BpmProcessInstanceResultEvent extends ApplicationEvent {
     @NotNull(message = "流程实例的编号不能为空")
     private String id;
     /**
-     * 流程实例的 key
+     * 流程定义的 key
      */
     @NotNull(message = "流程实例的 key 不能为空")
     private String processDefinitionKey;

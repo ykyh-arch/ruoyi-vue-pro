@@ -6,6 +6,19 @@ Deployment - 流程部署 -> act_re_deployment
 ProcessDefinition - 部署后产生新的流程定义（流程定义有多个） -> act_re_procdef、bpm_process_definition_ext
 ProcessInstance - 流程实例 -> act_ru_actinst、act_hi_procinst、act_hi_actinst、bpm_process_instance_ext 
 Task - 流程任务 -> act_ru_task、act_hi_taskinst、bpm_task_ext
+DelegateExecution - 任务执行 -> act_ru_execution（PROC_DEF_ID_、PROC_INST_ID_、ACT_ID_（即TASK_DEF_KEY_）、ROOT_PROC_INST_ID_ 树结构）
+关系
+BpmModel（一）-> ProcessDefinition（多，分多个挂起与一个激活）
+ProcessDefinition（一，激活）-> ProcessInstance（多）
+ProcessInstance（一）-> DelegateExecution（对应单实例任务一个，多实例任务多个，任务执行完数据清除）
+DelegateExecution（一） -> Task（一），两者一一对应
+其他表
+act_hi_varinst - 历史流程实例变量
+act_ru_variable - 流程运行变量
+act_id_user - 用户
+act_id_group - 组	
+act_id_membership - 用户与组关联
+act_ru_identitylink、act_hi_identitylink - 候选人、分配人（负责人）、参与人、发起人等
 // 保存Model
 repositoryService.newModel();
 repositoryService.saveModel(model);
@@ -47,7 +60,7 @@ repositoryService.suspendProcessDefinitionById(id, false, null);
 repositoryService.activateProcessDefinitionById(id, false, null);
 // 构建ProcessDefinition
 repositoryService.getProcessDefinition(id);
-// 构建开启ProcessInstance
+// 构建发起ProcessInstance
 runtimeService.startProcessInstanceById(definition.getId(), businessKey, variables);
 // 构建ProcessInstance
 runtimeService.createProcessInstanceQuery().processInstanceId(id).singleResult();
@@ -73,4 +86,6 @@ historyService.createHistoricTaskInstanceQuery().finished().taskAssignee(userId)
 // 构建Task
 taskService.createTaskQuery().taskId(id).singleResult();
 // 通过审批Task
-taskService.complete(taskId, instance.getProcessVariables());                 
+taskService.complete(taskId, instance.getProcessVariables());   
+// 更新Task负责人
+taskService.setAssignee(taskId, userId);              

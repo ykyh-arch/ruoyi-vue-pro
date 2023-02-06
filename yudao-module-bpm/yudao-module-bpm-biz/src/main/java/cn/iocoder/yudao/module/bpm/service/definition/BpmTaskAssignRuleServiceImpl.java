@@ -82,6 +82,7 @@ public class BpmTaskAssignRuleServiceImpl implements BpmTaskAssignRuleService {
      */
     private Map<Long, BpmTaskAssignScript> scriptMap = Collections.emptyMap();
 
+    // setter 注入方式
     @Resource
     public void setScripts(List<BpmTaskAssignScript> scripts) {
         this.scriptMap = convertMap(scripts, script -> script.getEnum().getId());
@@ -269,6 +270,7 @@ public class BpmTaskAssignRuleServiceImpl implements BpmTaskAssignRuleService {
         } else if (Objects.equals(BpmTaskAssignRuleTypeEnum.USER_GROUP.getType(), rule.getType())) {
             assigneeUserIds = calculateTaskCandidateUsersByUserGroup(rule);
         } else if (Objects.equals(BpmTaskAssignRuleTypeEnum.SCRIPT.getType(), rule.getType())) {
+            // 计算自定义脚本任务候选人
             assigneeUserIds = calculateTaskCandidateUsersByScript(execution, rule);
         }
 
@@ -335,6 +337,7 @@ public class BpmTaskAssignRuleServiceImpl implements BpmTaskAssignRuleService {
             return;
         }
         Map<Long, AdminUserRespDTO> userMap = adminUserApi.getUserMap(assigneeUserIds);
+        // 移除操作
         assigneeUserIds.removeIf(id -> {
             AdminUserRespDTO user = userMap.get(id);
             return user == null || !CommonStatusEnum.ENABLE.getStatus().equals(user.getStatus());
