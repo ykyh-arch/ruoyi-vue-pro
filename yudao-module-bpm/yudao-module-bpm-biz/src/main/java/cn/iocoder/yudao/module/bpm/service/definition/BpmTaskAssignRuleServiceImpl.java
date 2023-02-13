@@ -82,7 +82,7 @@ public class BpmTaskAssignRuleServiceImpl implements BpmTaskAssignRuleService {
      */
     private Map<Long, BpmTaskAssignScript> scriptMap = Collections.emptyMap();
 
-    // setter 注入方式
+    // setter 注入方式，也可参考 lab-67-netty-demo#cn.iocoder.springboot.lab67.nettycommondemo.dispatcher.MessageHandlerContainer#handlers 的实现方式
     @Resource
     public void setScripts(List<BpmTaskAssignScript> scripts) {
         this.scriptMap = convertMap(scripts, script -> script.getEnum().getId());
