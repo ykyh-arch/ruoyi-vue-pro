@@ -126,7 +126,7 @@ public class PayAppServiceImpl implements PayAppService {
 
     @Override
     public void updateAppStatus(Long id, Integer status) {
-        // 校验商户存在
+        // 校验应用存在
         this.checkAppExists(id);
         // 更新状态
         PayAppDO app = new PayAppDO();

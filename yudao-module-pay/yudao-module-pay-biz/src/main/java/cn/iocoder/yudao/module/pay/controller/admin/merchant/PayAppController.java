@@ -65,7 +65,7 @@ public class PayAppController {
     @ApiOperation("更新支付应用状态")
     @PreAuthorize("@ss.hasPermission('pay:app:update')")
     public CommonResult<Boolean> updateAppStatus(@Valid @RequestBody PayAppUpdateStatusReqVO updateReqVO) {
-        appService.updateAppStatus(updateReqVO.getId(), updateReqVO.getStatus());
+            appService.updateAppStatus(updateReqVO.getId(), updateReqVO.getStatus());
         return success(true);
     }
 
@@ -114,7 +114,7 @@ public class PayAppController {
 
         // 得到所有的商户信息
         Collection<Long> merchantIds = CollectionUtils.convertList(pageResult.getList(), PayAppDO::getMerchantId);
-        Map<Long, PayMerchantDO> deptMap = merchantService.getMerchantMap(merchantIds);
+        Map<Long, PayMerchantDO> payMerchantMap = merchantService.getMerchantMap(merchantIds);
 
         // 利用反射将渠道数据复制到返回的数据结构中去
         List<PayAppPageItemRespVO> appList = new ArrayList<>(pageResult.getList().size());
@@ -122,7 +122,7 @@ public class PayAppController {
             // 写入应用信息的数据
             PayAppPageItemRespVO respVO = PayAppConvert.INSTANCE.pageConvert(app);
             // 写入商户的数据
-            respVO.setPayMerchant(PayAppConvert.INSTANCE.convert(deptMap.get(app.getMerchantId())));
+            respVO.setPayMerchant(PayAppConvert.INSTANCE.convert(payMerchantMap.get(app.getMerchantId())));
             // 写入支付渠道信息的数据
             Set<String> channelCodes = new HashSet<>(PayChannelEnum.values().length);
             while (iterator.hasNext()) {

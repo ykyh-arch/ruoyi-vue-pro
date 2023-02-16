@@ -10,7 +10,7 @@ import javax.validation.constraints.*;
 @ToString(callSuper = true)
 public class PayChannelUpdateReqVO extends PayChannelBaseVO {
 
-    @ApiModelProperty(value = "商户编号", required = true)
+    @ApiModelProperty(value = "渠道编号", required = true)
     @NotNull(message = "商户编号不能为空")
     private Long id;
 

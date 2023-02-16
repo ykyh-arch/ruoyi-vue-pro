@@ -20,7 +20,7 @@ import java.util.Set;
 public interface PayClientConfig {
 
     /**
-     * 配置验证参数是
+     * 配置验证参数
      *
      * @param validator 校验对象
      * @return 配置好的验证参数

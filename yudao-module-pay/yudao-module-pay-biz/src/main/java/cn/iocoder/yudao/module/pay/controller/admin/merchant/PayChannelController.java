@@ -60,7 +60,7 @@ public class PayChannelController {
     }
 
     @GetMapping("/get")
-    @ApiOperation("获得支付渠道 ")
+    @ApiOperation("获得支付渠道")
     @ApiImplicitParam(name = "id", value = "编号", required = true, example = "1024", dataTypeClass = Long.class)
     @PreAuthorize("@ss.hasPermission('pay:channel:query')")
     public CommonResult<PayChannelRespVO> getChannel(@RequestParam("id") Long id) {

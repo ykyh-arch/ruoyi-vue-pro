@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 public class PayAppUpdateStatusReqVO {
 
     @ApiModelProperty(value = "商户编号", required = true, example = "1024")
-    @NotNull(message = "商户编号不能为空")
+    @NotNull(message = "应用编号不能为空")
     private Long id;
 
     @ApiModelProperty(value = "状态", required = true, example = "1", notes = "见 SysCommonStatusEnum 枚举")
