@@ -80,8 +80,9 @@ public abstract class AbstractPayClient<Config extends PayClientConfig> implemen
 
     @Override
     public final PayCommonResult<?> unifiedOrder(PayOrderUnifiedReqDTO reqDTO) {
+        // 显示参数校验
         Validation.buildDefaultValidatorFactory().getValidator().validate(reqDTO);
-        // 执行短信发送
+        // 执行统一下单请求
         PayCommonResult<?> result;
         try {
             result = doUnifiedOrder(reqDTO);

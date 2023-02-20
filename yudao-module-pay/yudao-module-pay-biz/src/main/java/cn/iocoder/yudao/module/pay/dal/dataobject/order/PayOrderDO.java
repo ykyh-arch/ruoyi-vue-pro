@@ -129,7 +129,7 @@ public class PayOrderDO extends BaseDO {
     /**
      * 支付成功的订单拓展单编号
      *
-     * 关联 {@link PayOrderDO#getId()}
+     * 关联 {@link PayOrderExtensionDO#getId()}
      */
     private Long successExtensionId;
 

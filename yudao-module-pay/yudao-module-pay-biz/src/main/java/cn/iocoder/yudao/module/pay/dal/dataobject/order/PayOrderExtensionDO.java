@@ -77,7 +77,7 @@ public class PayOrderExtensionDO extends BaseDO {
     /**
      * 支付渠道异步通知的内容
      *
-     * 在支持成功后，会记录回调的数据
+     * 在支付成功后，会记录回调的数据
      */
     private String channelNotifyData;
 

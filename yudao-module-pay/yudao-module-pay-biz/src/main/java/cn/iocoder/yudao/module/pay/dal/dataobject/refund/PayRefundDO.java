@@ -90,7 +90,7 @@ public class PayRefundDO extends BaseDO {
     /**
      * 商户退款订单号, 由商户系统产生， 由他们保证唯一，不能为空，通知商户时会传该字段。
      * 例如说，内部系统 A 的退款订单号。需要保证每个 PayMerchantDO 唯一
-     * 个商户退款订单，对应一条退款请求记录。可多次提交。 渠道保持幂等
+     * 一个商户退款订单，对应一条退款请求记录。可多次提交。 渠道保持幂等
      * 使用商户退款单，作为退款请求号
      * https://pay.weixin.qq.com/wiki/doc/apiv3/apis/chapter3_1_9.shtml 中的 out_refund_no
      * https://opendocs.alipay.com/apis alipay.trade.refund 中的 out_request_no
