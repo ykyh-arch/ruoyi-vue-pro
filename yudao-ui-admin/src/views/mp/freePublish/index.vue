@@ -25,6 +25,8 @@ SOFTWARE.
 -->
 <template>
   <div class="app-container">
+    <doc-alert title="公众号图文" url="https://doc.iocoder.cn/mp/article/" />
+
     <!-- 搜索工作栏 -->
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="公众号" prop="accountId">
@@ -62,7 +64,7 @@ import { getSimpleAccounts } from "@/api/mp/account";
 import WxNews from '@/views/mp/components/wx-news/main.vue';
 
 export default {
-  name: 'mpDraft',
+  name: 'MpFreePublish',
   components: {
     WxNews
   },

@@ -545,7 +545,7 @@
             <el-switch v-model="activeData.__config__.required" />
           </el-form-item>
 
-          <template v-if="activeData.__config__.layoutTree">
+          <template v-if="activeData.__config__.layoutTree" v-slot="{ node, data }">
             <el-divider>布局结构树</el-divider>
             <el-tree
               :data="[activeData.__config__]"

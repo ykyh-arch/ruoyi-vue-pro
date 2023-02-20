@@ -2,9 +2,11 @@ package cn.iocoder.yudao.framework.pay.core.client.impl.alipay;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.LocalDateTimeUtil;
-import cn.iocoder.yudao.framework.pay.core.client.AbstractPayCodeMapping;
-import cn.iocoder.yudao.framework.pay.core.client.PayCommonResult;
-import cn.iocoder.yudao.framework.pay.core.client.dto.*;
+import cn.iocoder.yudao.framework.pay.core.client.dto.notify.PayNotifyDataDTO;
+import cn.iocoder.yudao.framework.pay.core.client.dto.notify.PayOrderNotifyRespDTO;
+import cn.iocoder.yudao.framework.pay.core.client.dto.notify.PayRefundNotifyDTO;
+import cn.iocoder.yudao.framework.pay.core.client.dto.refund.PayRefundUnifiedReqDTO;
+import cn.iocoder.yudao.framework.pay.core.client.dto.refund.PayRefundUnifiedRespDTO;
 import cn.iocoder.yudao.framework.pay.core.client.impl.AbstractPayClient;
 import cn.iocoder.yudao.framework.pay.core.enums.PayNotifyRefundStatusEnum;
 import com.alipay.api.AlipayApiException;
@@ -33,9 +35,8 @@ public abstract class AbstractAlipayClient extends AbstractPayClient<AlipayPayCl
 
     protected DefaultAlipayClient client;
 
-    public AbstractAlipayClient(Long channelId, String channelCode,
-                                AlipayPayClientConfig config, AbstractPayCodeMapping codeMapping) {
-        super(channelId, channelCode, config, codeMapping);
+    public AbstractAlipayClient(Long channelId, String channelCode, AlipayPayClientConfig config) {
+        super(channelId, channelCode, config);
     }
 
     @Override
@@ -102,15 +103,19 @@ public abstract class AbstractAlipayClient extends AbstractPayClient<AlipayPayCl
      * @return 退款请求 Response
      */
     @Override
-    protected PayCommonResult<PayRefundUnifiedRespDTO> doUnifiedRefund(PayRefundUnifiedReqDTO reqDTO)  {
+    protected PayRefundUnifiedRespDTO doUnifiedRefund(PayRefundUnifiedReqDTO reqDTO)  {
         AlipayTradeRefundModel model=new AlipayTradeRefundModel();
         model.setTradeNo(reqDTO.getChannelOrderNo());
         model.setOutTradeNo(reqDTO.getPayTradeNo());
+
         model.setOutRequestNo(reqDTO.getMerchantRefundId());
-        model.setRefundAmount(calculateAmount(reqDTO.getAmount()).toString());
+        model.setRefundAmount(formatAmount(reqDTO.getAmount() / 2).toString());
         model.setRefundReason(reqDTO.getReason());
+
         AlipayTradeRefundRequest refundRequest = new AlipayTradeRefundRequest();
         refundRequest.setBizModel(model);
+        refundRequest.setNotifyUrl(reqDTO.getNotifyUrl());
+        refundRequest.setReturnUrl(reqDTO.getNotifyUrl());
         try {
             AlipayTradeRefundResponse response =  client.execute(refundRequest);
             log.info("[doUnifiedRefund][response({}) 发起退款 渠道返回", toJsonString(response));
@@ -119,18 +124,19 @@ public abstract class AbstractAlipayClient extends AbstractPayClient<AlipayPayCl
                 //支付宝不返回退款单号，设置为空
                 PayRefundUnifiedRespDTO respDTO = new PayRefundUnifiedRespDTO();
                 respDTO.setChannelRefundId("");
-                return PayCommonResult.build(response.getCode(), response.getMsg(), respDTO, codeMapping);
+//                return PayCommonResult.build(response.getCode(), response.getMsg(), respDTO, codeMapping); TODO
+                return null;
             }
             // 失败。需要抛出异常
-            return PayCommonResult.build(response.getCode(), response.getMsg(), null, codeMapping);
+//            return PayCommonResult.build(response.getCode(), response.getMsg(), null, codeMapping); TODO
+            return null;
         } catch (AlipayApiException e) {
             // TODO 记录异常日志
             log.error("[doUnifiedRefund][request({}) 发起退款失败,网络读超时，退款状态未知]", toJsonString(reqDTO), e);
-            return PayCommonResult.build(e.getErrCode(), e.getErrMsg(), null, codeMapping);
+//            return PayCommonResult.build(e.getErrCode(), e.getErrMsg(), null, codeMapping); TODO
+            return null;
         }
     }
-
-
 
     /**
      * 支付宝统一回调参数  str 转 map
