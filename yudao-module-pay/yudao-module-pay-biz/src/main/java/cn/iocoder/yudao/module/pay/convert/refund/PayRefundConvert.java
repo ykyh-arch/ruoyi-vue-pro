@@ -24,6 +24,8 @@ public interface PayRefundConvert {
 
     PayRefundRespVO convert(PayRefundDO bean);
 
+
+
     /**
      * 退款订单 DO 转 退款详情订单 VO
      *

@@ -49,7 +49,7 @@ public class PayCommonResult<T> extends CommonResult<T> {
 
     public static <T> PayCommonResult<T> error(Throwable ex) {
         PayCommonResult<T> result = new PayCommonResult<>();
-        result.setCode(PayFrameworkErrorCodeConstants.EXCEPTION.getCode());
+        result.setCode(PayFrameworkErrorCodeConstants.PAY_EXCEPTION.getCode());
         result.setMsg(ExceptionUtil.getRootCauseMessage(ex));
         return result;
     }

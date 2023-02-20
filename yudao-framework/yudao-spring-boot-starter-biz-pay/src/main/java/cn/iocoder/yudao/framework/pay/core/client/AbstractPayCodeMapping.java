@@ -18,7 +18,7 @@ public abstract class AbstractPayCodeMapping {
     public final ErrorCode apply(String apiCode, String apiMsg) {
         if (apiCode == null) {
             log.error("[apply][API 错误码为空，请排查]");
-            return PayFrameworkErrorCodeConstants.EXCEPTION;
+            return PayFrameworkErrorCodeConstants.PAY_EXCEPTION;
         }
         ErrorCode errorCode = this.apply0(apiCode, apiMsg);
         if (errorCode == null) {
