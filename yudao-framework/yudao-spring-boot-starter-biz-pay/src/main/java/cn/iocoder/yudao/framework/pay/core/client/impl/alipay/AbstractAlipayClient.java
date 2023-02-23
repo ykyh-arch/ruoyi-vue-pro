@@ -25,7 +25,7 @@ import java.util.Map;
 import static cn.iocoder.yudao.framework.common.util.json.JsonUtils.toJsonString;
 
 /**
- * 支付宝抽象类， 实现支付宝统一的接口。如退款
+ * 支付宝抽象类， 实现支付宝统一的接口。如支付、退款
  *
  * @author  jason
  */
@@ -49,7 +49,7 @@ public abstract class AbstractAlipayClient extends AbstractPayClient<AlipayPayCl
 
     /**
      * 从支付宝通知返回参数中解析 PayOrderNotifyRespDTO, 通知具体参数参考
-     *  //https://opendocs.alipay.com/open/203/105286
+     * https://opendocs.alipay.com/open/203/105286
      * @param data 通知结果
      * @return 解析结果 PayOrderNotifyRespDTO
      * @throws Exception  解析失败，抛出异常
@@ -116,8 +116,8 @@ public abstract class AbstractAlipayClient extends AbstractPayClient<AlipayPayCl
             AlipayTradeRefundResponse response =  client.execute(refundRequest);
             log.info("[doUnifiedRefund][response({}) 发起退款 渠道返回", toJsonString(response));
             if (response.isSuccess()) {
-                //退款导致触发的异步通知是发送到支付接口中设置的notify_url
-                //支付宝不返回退款单号，设置为空
+                // 退款导致触发的异步通知是发送到支付接口中设置的 notify_url
+                // 支付宝不返回退款单号，设置为空
                 PayRefundUnifiedRespDTO respDTO = new PayRefundUnifiedRespDTO();
                 respDTO.setChannelRefundId("");
                 return PayCommonResult.build(response.getCode(), response.getMsg(), respDTO, codeMapping);
@@ -130,8 +130,6 @@ public abstract class AbstractAlipayClient extends AbstractPayClient<AlipayPayCl
             return PayCommonResult.build(e.getErrCode(), e.getErrMsg(), null, codeMapping);
         }
     }
-
-
 
     /**
      * 支付宝统一回调参数  str 转 map

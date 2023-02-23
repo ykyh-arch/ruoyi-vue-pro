@@ -69,6 +69,7 @@ public abstract class AbstractPayClient<Config extends PayClientConfig> implemen
         this.init();
     }
 
+    // 转化为元
     protected Double calculateAmount(Long amount) {
         return amount / 100.0;
     }

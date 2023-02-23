@@ -13,7 +13,7 @@ import static cn.iocoder.yudao.framework.common.util.json.JsonUtils.toJsonString
 
 /**
  * 支付宝【扫码支付】的 PayClient 实现类
- * 文档：https://opendocs.alipay.com/apis/02890k
+ * 文档：https://opendocs.alipay.com/open/194/106078
  *
  * @author 芋道源码
  */
@@ -24,6 +24,11 @@ public class AlipayQrPayClient extends AbstractAlipayClient {
         super(channelId, PayChannelEnum.ALIPAY_QR.getCode(), config, new AlipayPayCodeMapping());
     }
 
+    /**
+     * 支付宝统一的下单接口(统一收单线下交易预创建) alipay.trade.precreate
+     * @param reqDTO
+     * @return
+     */
     @Override
     public PayCommonResult<AlipayTradePrecreateResponse> doUnifiedOrder(PayOrderUnifiedReqDTO reqDTO) {
         // 构建 AlipayTradePrecreateModel 请求

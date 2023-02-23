@@ -109,6 +109,7 @@ public class AlipayPayClientConfig implements PayClientConfig {
     public interface ModeCertificate {
     }
 
+    // 分组校验逻辑
     @Override
     public Set<ConstraintViolation<PayClientConfig>> verifyParam(Validator validator) {
         return validator.validate(this,

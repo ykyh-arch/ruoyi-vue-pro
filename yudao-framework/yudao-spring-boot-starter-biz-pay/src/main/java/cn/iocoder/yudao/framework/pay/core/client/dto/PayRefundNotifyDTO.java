@@ -8,7 +8,7 @@ import lombok.ToString;
 import java.util.Date;
 
 /**
- * 从渠道返回数据中解析得到的支付退款通知的Notify DTO
+ * 从渠道返回数据中解析得到的支付退款通知的 Notify DTO
  *
  * @author jason
  */
