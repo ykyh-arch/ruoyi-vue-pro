@@ -1,4 +1,4 @@
-**严肃声明：现在、未来都不会有商业版本，所有代码全部开源！**
+**严肃声明：现在、未来都不会有商业版本，所有代码全部开源!！**
 
 **「我喜欢写代码，乐此不疲」**  
 **「我喜欢做开源，以此为乐」**
@@ -21,7 +21,7 @@
 >
 > 😜 给项目点点 Star 吧，这对我们真的很重要！
 
-![架构图](https://static.iocoder.cn/ruoyi-vue-pro-architecture.png)
+![架构图](https://static.iocoder.cn/ruoyi-vue-pro-architecture.png?imageView2/2/format/webp)
 
 * 管理后台的 Vue3 版本采用 [vue-element-plus-admin](https://gitee.com/kailong110120130/vue-element-plus-admin) ，Vue2 版本采用 [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin) 
 * 管理后台的移动端采用 [uni-app](https://github.com/dcloudio/uni-app) 方案，一份代码多终端适配，同时支持 APP、小程序、H5！
@@ -29,19 +29,51 @@
 * 数据库可使用 MySQL、Oracle、PostgreSQL、SQL Server、MariaDB、国产达梦 DM、TiDB 等
 * 权限认证使用 Spring Security & Token & Redis，支持多终端、多种用户的认证系统，支持 SSO 单点登录
 * 支持加载动态权限菜单，按钮级别权限控制，本地缓存提升性能
-* 支持 SaaS 多租户系统，可自定义每个租户的权限，提供透明化的多租户底层封装
+* 支持 SaaS 多租户，可自定义每个租户的权限，提供透明化的多租户底层封装
 * 工作流使用 Flowable，支持动态表单、在线设计流程、会签 / 或签、多种任务分配方式
 * 高效率开发，使用代码生成器可以一键生成前后端代码 + 单元测试 + Swagger 接口文档 + Validator 参数校验
 * 集成微信小程序、微信公众号、企业微信、钉钉等三方登陆，集成支付宝、微信等支付与退款
 * 集成阿里云、腾讯云等短信渠道，集成 MinIO、阿里云、腾讯云、七牛云等云存储服务
-* 集成报表设计器，支持数据报表、图形报表、打印设计等
+* 集成报表设计器、大屏设计器，通过拖拽即可生成酷炫的报表与大屏
 
-| 项目名                  | 说明                     | 传送门                                                                                                                                 |
-|----------------------|------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| `ruoyi-vue-pro`      | Spring Boot 多模块        | **[Gitee](https://gitee.com/zhijiantianya/ruoyi-vue-pro)** &nbsp;&nbsp;&nbsp; [Github](https://github.com/YunaiV/ruoyi-vue-pro)     |
-| `yudao-cloud`        | Spring Cloud 微服务       | **[Gitee](https://gitee.com/zhijiantianya/yudao-cloud)** &nbsp;&nbsp;&nbsp; [Github](https://github.com/YunaiV/yudao-cloud)         |
-| `Spring-Boot-Labs`   | Spring Boot & Cloud 入门 | **[Gitee](https://gitee.com/zhijiantianya/SpringBoot-Labs)** &nbsp;&nbsp;&nbsp; [Github](https://github.com/YunaiV/SpringBoot-Labs) |
- | `ruoyi-vue-pro-mini` | 精简版：移除工作流、支付等模块        | **[Gitee](https://gitee.com/zhijiantianya/ruoyi-vue-pro/tree/mini)**                                                                |
+##  🐳 项目关系
+
+![架构演进](https://static.iocoder.cn/yudao-roadmap.png?imageView2/2/format/webp)
+
+三个项目的功能对比，可见社区共同整理的 [国产开源项目对比](https://www.yuque.com/xiatian-bsgny/lm0ec1/wqf8mn) 表格。
+
+### 后端项目
+
+
+| 项目                                                              | Star                                                                                                                                                                                                                                                                                             | 简介                          |
+|-----------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------|
+| [ruoyi-vue-pro](https://gitee.com/zhijiantianya/ruoyi-vue-pro)  | [![Gitee star](https://gitee.com/zhijiantianya/ruoyi-vue-pro/badge/star.svg?theme=white)](https://gitee.com/zhijiantianya/ruoyi-vue-pro) [![GitHub stars](https://img.shields.io/github/stars/YunaiV/ruoyi-vue-pro.svg?style=social&label=Stars)](https://github.com/YunaiV/ruoyi-vue-pro)       | 基于 Spring Boot 多模块架构        |
+| [yudao-cloud](https://gitee.com/zhijiantianya/yudao-cloud)      | [![Gitee star](https://gitee.com/zhijiantianya/yudao-cloud/badge/star.svg?theme=white)](https://gitee.com/zhijiantianya/yudao-cloud) [![GitHub stars](https://img.shields.io/github/stars/YunaiV/yudao-cloud.svg?style=social&label=Stars)](https://github.com/YunaiV/yudao-cloud)               | 基于 Spring Cloud 微服务架构       |
+| [Spring-Boot-Labs](https://gitee.com/yudaocode/SpringBoot-Labs) | [![Gitee star](https://gitee.com/yudaocode/SpringBoot-Labs/badge/star.svg?theme=white)](https://gitee.com/zhijiantianya/yudao-cloud) [![GitHub stars](https://img.shields.io/github/stars/yudaocode/SpringBoot-Labs.svg?style=social&label=Stars)](https://github.com/yudaocode/SpringBoot-Labs) | 系统学习 Spring Boot & Cloud 专栏 |
+
+### 前端项目
+
+| 项目                                                                                                       | Star                                                                                                                                                                                                                                                                                                                                                           | 简介                              |
+|----------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------|
+| [yudao-ui-admin-vue3](https://gitee.com/yudaocode/yudao-ui-admin-vue3)                                   | [![Gitee star](https://gitee.com/yudaocode/yudao-ui-admin-vue3/badge/star.svg?theme=white)](https://gitee.com/yudaocode/yudao-ui-admin-vue3) [![GitHub stars](https://img.shields.io/github/stars/yudaocode/yudao-ui-admin-vue3.svg?style=social&label=Stars)](https://github.com/yudaocode/yudao-ui-admin-vue3)                                               | 基于 Vue3 + element-plus 实现的管理后台  |
+| [yudao-ui-admin](https://gitee.com/zhijiantianya/ruoyi-vue-pro/tree/master/yudao-ui-admin)               | [![Gitee star](https://gitee.com/zhijiantianya/ruoyi-vue-pro/badge/star.svg?theme=white)](https://gitee.com/zhijiantianya/ruoyi-vue-pro/tree/master/yudao-ui-admin) [![GitHub stars](https://img.shields.io/github/stars/YunaiV/ruoyi-vue-pro.svg?style=social&label=Stars)](https://github.com/YunaiV/ruoyi-vue-pro/tree/master/yudao-ui-admin)               | 基于 Vue2 + element-ui 实现的管理后台    |
+| [yudao-ui-admin-uniapp](https://gitee.com/zhijiantianya/ruoyi-vue-pro/tree/master/yudao-ui-admin-uniapp) | [![Gitee star](https://gitee.com/zhijiantianya/ruoyi-vue-pro/badge/star.svg?theme=white)](https://gitee.com/zhijiantianya/ruoyi-vue-pro/tree/master/yudao-ui-admin-uniapp) [![GitHub stars](https://img.shields.io/github/stars/YunaiV/ruoyi-vue-pro.svg?style=social&label=Stars)](https://github.com/YunaiV/ruoyi-vue-pro/tree/master/yudao-ui-admin-uniapp) | 基于 uni-app + uni-ui 实现的管理后台的小程序 |
+| [yudao-ui-go-view](https://gitee.com/yudaocode/yudao-ui-go-view)                                         | [![Gitee star](https://gitee.com/yudaocode/yudao-ui-go-view/badge/star.svg?theme=white)](https://gitee.com/yudaocode/yudao-ui-go-view) [![GitHub stars](https://img.shields.io/github/stars/yudaocode/yudao-ui-go-view.svg?style=social&label=Stars)](https://github.com/yudaocode/yudao-ui-go-view)                                                           | 基于 Vue3 + naive-ui 实现的大屏报表      |
+| [yudao-ui-app](https://gitee.com/zhijiantianya/ruoyi-vue-pro/tree/master/yudao-ui-app)                   | [![Gitee star](https://gitee.com/zhijiantianya/ruoyi-vue-pro/badge/star.svg?theme=white)](https://gitee.com/zhijiantianya/ruoyi-vue-pro/tree/master/yudao-ui-app) [![GitHub stars](https://img.shields.io/github/stars/YunaiV/ruoyi-vue-pro.svg?style=social&label=Stars)](https://github.com/YunaiV/ruoyi-vue-pro/tree/master/yudao-ui-app)                   | 基于 uni-app + uview 实现的用户 App    |
+
+## 🐰 分支说明
+
+|       | JDK 8 完整版                                                 | JDK 8 精简版                                                          | JDK 17 完整版                                                                  |
+|-------|-----------------------------------------------------------|--------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| 分支    | [`master`](https://gitee.com/zhijiantianya/ruoyi-vue-pro) | [`mini`](https://gitee.com/zhijiantianya/ruoyi-vue-pro/tree/mini/) | [`boot-dev`](https://gitee.com/zhijiantianya/ruoyi-vue-pro/tree/boot3-dev/) |
+| 说明    | 包括所有功能                                                    | 只保留核心功能                                                            | 适配 Spring Boot 3.X                                                          |
+| 系统功能  | √                                                         | √                                                                  | √                                                                           |
+| 基础设施  | √                                                         | √                                                                  | √                                                                           |
+| 会员中心  | √                                                         | √                                                                  | √                                                                           |
+| 工作流程  | √                                                         | x                                                                  | 适配中                                                                         |
+| 数据报表  | √                                                         | x                                                                  | 适配中                                                                         |
+| 商城系统  | √                                                         | x                                                                  | √                                                                           |
+| 微信公众号 | √                                                         | x                                                                  | √                                                                           |
 
 ## 😎 开源协议
 
@@ -54,6 +86,14 @@
 ![开源项目对比](https://static.iocoder.cn/project-vs.png?imageView2/2/format/webp/w/1280)
 
 ③ 代码整洁、架构整洁，遵循《阿里巴巴 Java 开发手册》规范，代码注释详细，57000 行 Java 代码，22000 行代码注释。
+
+## 🤝 项目外包
+
+我们也是接外包滴，如果你有项目想要外包，可以微信联系【**Aix9975**】。
+
+团队包含专业的项目经理、架构师、前端工程师、后端工程师、测试工程师、运维工程师，可以提供全流程的外包服务。
+
+项目可以是商城、SCRM 系统、OA 系统、物流系统、ERP 系统、CMS 系统、HIS 系统、支付系统、IM 聊天、微信公众号、微信小程序等等。
 
 ## 🐼 内置功能
 
@@ -91,6 +131,8 @@
 | 🚀  | 租户套餐  | 配置租户套餐，自定每个租户的菜单、操作、按钮的权限       |
 |     | 字典管理  | 对系统中经常使用的一些较为固定的数据进行维护          |
 | 🚀  | 短信管理  | 短信渠道、短息模板、短信日志，对接阿里云、腾讯云等主流短信平台 |
+| 🚀  | 邮件管理  | 邮箱账号、邮件模版、邮件发送日志，支持所有邮件平台       |
+| 🚀  | 站内信   | 系统内的消息通知，提供站内信模版、站内信消息          |
 | 🚀  | 操作日志  | 系统正常操作日志记录和查询，集成 Swagger 生成日志内容 |
 | ⭐️  | 登录日志  | 系统登录日志记录查询，包含登录异常               |
 | 🚀  | 错误码管理 | 系统所有错误码的管理，可在线修改错误提示，无需重启服务     |
@@ -148,10 +190,10 @@ ps：核心功能已经实现，正在对接微信小程序中...
 
 ### 数据报表
 
-|     | 功能       | 描述                                           |
-|-----|----------|----------------------------------------------|
-| 🚀  | 报表设计器     | 支持数据报表、图形报表、打印设计等       |
-| 🚀  | 大屏设计器     | 建设中... 拖拽式实现可视化数据大屏          |
+|     | 功能    | 描述                 |
+|-----|-------|--------------------|
+| 🚀  | 报表设计器 | 支持数据报表、图形报表、打印设计等  |
+| 🚀  | 大屏设计器 | 拖拽生成数据大屏，内置几十种图表组件 |
 
 ### 微信公众号
 
@@ -184,29 +226,27 @@ ps：核心功能已经实现，正在对接微信小程序中...
 
 ## 🐨 技术栈
 
-| 项目                           | 说明                 |
-|------------------------------|--------------------|
-| `yudao-dependencies`         | Maven 依赖版本管理       |
-| `yudao-framework`            | Java 框架拓展          |
-| `yudao-server`               | 管理后台 + 用户 APP 的服务端 |
-| `yudao-ui-admin`             | 管理后台的 Vue2 前端项目    |
-| `yudao-ui-admin-vue3`        | 管理后台的 Vue3 前端项目    |
-| `yudao-ui-admin-uniapp`      | 管理后台的 uni-app 多端项目 |
-| `yudao-ui-app`               | 用户 APP 的 UI 界面     |
-| `yudao-module-system`        | 系统功能的 Module 模块    |
-| `yudao-module-member`        | 会员中心的 Module 模块    |
-| `yudao-module-infra`         | 基础设施的 Module 模块    |
-| `yudao-module-bpm`           | 工作流程的 Module 模块    |
-| `yudao-module-pay`           | 支付系统的 Module 模块    |
-| `yudao-module-mall`          | 商城系统的 Module 模块    |
-| `yudao-module-mp`            | 微信公众号的 Module 模块   |
-| `yudao-module-visualization` | 大屏报表 Module 模块     |
+### 模块
 
-### 后端
+| 项目                                                                       | 说明                 |
+|--------------------------------------------------------------------------|--------------------|
+| `yudao-dependencies`                                                     | Maven 依赖版本管理       |
+| `yudao-framework`                                                        | Java 框架拓展          |
+| `yudao-server`                                                           | 管理后台 + 用户 APP 的服务端 |
+| `yudao-module-system`                                                    | 系统功能的 Module 模块    |
+| `yudao-module-member`                                                    | 会员中心的 Module 模块    |
+| `yudao-module-infra`                                                     | 基础设施的 Module 模块    |
+| `yudao-module-bpm`                                                       | 工作流程的 Module 模块    |
+| `yudao-module-pay`                                                       | 支付系统的 Module 模块    |
+| `yudao-module-mall`                                                      | 商城系统的 Module 模块    |
+| `yudao-module-mp`                                                        | 微信公众号的 Module 模块   |
+| `yudao-module-report`                                                    | 大屏报表 Module 模块     |
+
+### 框架
 
 | 框架                                                                                          | 说明               | 版本          | 学习指南                                                           |
 |---------------------------------------------------------------------------------------------|------------------|-------------|----------------------------------------------------------------|
-| [Spring Boot](https://spring.io/projects/spring-boot)                                       | 应用开发框架           | 2.7.7       | [文档](https://github.com/YunaiV/SpringBoot-Labs)                |
+| [Spring Boot](https://spring.io/projects/spring-boot)                                       | 应用开发框架           | 2.7.8       | [文档](https://github.com/YunaiV/SpringBoot-Labs)                |
 | [MySQL](https://www.mysql.com/cn/)                                                          | 数据库服务器           | 5.7 / 8.0+  |                                                                |
 | [Druid](https://github.com/alibaba/druid)                                                   | JDBC 连接池、监控组件    | 1.2.15      | [文档](http://www.iocoder.cn/Spring-Boot/datasource-pool/?yudao) |
 | [MyBatis Plus](https://mp.baomidou.com/)                                                    | MyBatis 增强工具包    | 3.5.3.1     | [文档](http://www.iocoder.cn/Spring-Boot/MyBatis/?yudao)         |
@@ -218,7 +258,7 @@ ps：核心功能已经实现，正在对接微信小程序中...
 | [Hibernate Validator](https://github.com/hibernate/hibernate-validator)                     | 参数校验组件           | 6.2.5       | [文档](http://www.iocoder.cn/Spring-Boot/Validation/?yudao)      |
 | [Flowable](https://github.com/flowable/flowable-engine)                                     | 工作流引擎            | 6.8.0       | [文档](https://doc.iocoder.cn/bpm/)                              |
 | [Quartz](https://github.com/quartz-scheduler)                                               | 任务调度组件           | 2.3.2       | [文档](http://www.iocoder.cn/Spring-Boot/Job/?yudao)             |
-| [Knife4j](https://gitee.com/xiaoym/knife4j)                                                 | Swagger 增强 UI 实现 | 3.0.3       | [文档](http://www.iocoder.cn/Spring-Boot/Swagger/?yudao)         |
+| [Knife4j](https://gitee.com/xiaoym/knife4j)                                                 | Swagger 增强 UI 实现 | 4.0.0       | [文档](http://www.iocoder.cn/Spring-Boot/Swagger/?yudao)         |
 | [Resilience4j](https://github.com/resilience4j/resilience4j)                                | 服务保障组件           | 1.7.1       | [文档](http://www.iocoder.cn/Spring-Boot/Resilience4j/?yudao)    |
 | [SkyWalking](https://skywalking.apache.org/)                                                | 分布式应用追踪系统        | 8.12.0      | [文档](http://www.iocoder.cn/Spring-Boot/SkyWalking/?yudao)      |
 | [Spring Boot Admin](https://github.com/codecentric/spring-boot-admin)                       | Spring Boot 监控平台 | 2.7.10      | [文档](http://www.iocoder.cn/Spring-Boot/Admin/?yudao)           |
@@ -227,32 +267,6 @@ ps：核心功能已经实现，正在对接微信小程序中...
 | [Lombok](https://projectlombok.org/)                                                        | 消除冗长的 Java 代码    | 1.18.24     | [文档](http://www.iocoder.cn/Spring-Boot/Lombok/?yudao)          |
 | [JUnit](https://junit.org/junit5/)                                                          | Java 单元测试框架      | 5.8.2       | -                                                              |
 | [Mockito](https://github.com/mockito/mockito)                                               | Java Mock 框架     | 4.8.0       | -                                                              |
-
-### [管理后台 Vue2 前端](./yudao-ui-admin)
-
-| 框架                                                                           | 说明            | 版本     |
-|------------------------------------------------------------------------------|---------------|--------|
-| [Vue](https://cn.vuejs.org/index.html)                                       | JavaScript 框架 | 2.7.14 |
-| [Vue Element Admin](https://panjiachen.github.io/vue-element-admin-site/zh/) | 后台前端解决方案      | -      |
-
-### [管理后台 Vue3 前端](./yudao-ui-admin-vue3)
-
-| 框架                                                                   |      说明      |   版本   |
-|----------------------------------------------------------------------|:------------:|:------:|
-| [Vue](https://staging-cn.vuejs.org/)                                 |    Vue 框架    | 3.2.45 |
-| [Vite](https://cn.vitejs.dev//)                                      |   开发与构建工具    | 4.0.4  |
-| [Element Plus](https://element-plus.org/zh-CN/)                      | Element Plus | 2.2.28 |
-| [TypeScript](https://www.typescriptlang.org/docs/)                   |  TypeScript  | 4.9.4  |
-| [pinia](https://pinia.vuejs.org/)                                    |    vuex5     | 2.0.28 |
-| [vue-i18n](https://kazupon.github.io/vue-i18n/zh/introduction.html/) |     国际化      | 9.2.2  |
-| [vxe-table](https://vxetable.cn/)                                    |   vue最强表单    | 4.3.9  |
-
-### [管理后台 uni-app 跨端](./yudao-ui-admin-uniapp)
-
-| 框架                                              | 说明                 | 版本     |
-|-------------------------------------------------|--------------------|--------|
-| [uni-app](hhttps://github.com/dcloudio/uni-app) | 跨平台框架              | 2.0.0  |
-| [uni-ui](https://github.com/dcloudio/uni-ui)    | 基于 uni-app 的 UI 框架 | 1.4.20 |
 
 ## 🐷 演示图
 
@@ -301,9 +315,10 @@ ps：核心功能已经实现，正在对接微信小程序中...
 
 ### 数据报表
 
-| 模块      | biu                                                              | biu                                                                    | biu                                                                    |
-|---------|------------------------------------------------------------------|------------------------------------------------------------------------|------------------------------------------------------------------------|
+| 模块    | biu                                                                                                    | biu                                                                                                    | biu                                                                                                          |
+|-------|--------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
 | 报表设计器 | ![数据报表](https://static.iocoder.cn/images/ruoyi-vue-pro/报表设计器-数据报表.jpg?imageView2/2/format/webp/w/1280) | ![图形报表](https://static.iocoder.cn/images/ruoyi-vue-pro/报表设计器-图形报表.jpg?imageView2/2/format/webp/w/1280) | ![报表设计器-打印设计](https://static.iocoder.cn/images/ruoyi-vue-pro/报表设计器-打印设计.jpg?imageView2/2/format/webp/w/1280) |
+| 大屏设计器 | ![大屏列表](https://static.iocoder.cn/images/ruoyi-vue-pro/大屏设计器-列表.jpg?imageView2/2/format/webp/w/1280)   | ![大屏预览](https://static.iocoder.cn/images/ruoyi-vue-pro/大屏设计器-预览.jpg?imageView2/2/format/webp/w/1280)   | ![大屏编辑](https://static.iocoder.cn/images/ruoyi-vue-pro/大屏设计器-编辑.jpg?imageView2/2/format/webp/w/1280)         |
 
 ### 移动端（管理后台）
 

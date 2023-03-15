@@ -1,5 +1,7 @@
 <template>
   <div class="app-container">
+    <doc-alert title="公众号统计" url="https://doc.iocoder.cn/mp/statistics/" />
+
     <!-- 搜索工作栏 -->
     <el-form ref="queryForm" size="small" :inline="true" label-width="68px">
       <el-form-item label="公众号" prop="accountId">
@@ -80,7 +82,7 @@ import {addTime, beginOfDay, betweenDay, endOfDay, formatDate} from "@/utils/dat
 import { getSimpleAccounts } from "@/api/mp/account";
 
 export default {
-  name: 'mpStatistics',
+  name: 'MpStatistics',
   data() {
     return {
       date : [beginOfDay(new Date(new Date().getTime() - 3600 * 1000 * 24 * 7)), // -7 天
